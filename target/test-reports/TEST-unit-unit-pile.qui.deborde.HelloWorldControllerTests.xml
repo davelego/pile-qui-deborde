@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="a210pc012" name="pile.qui.deborde.HelloWorldControllerTests" tests="1" time="1.835" timestamp="2013-01-16T15:59:59">
-  <properties />
-  <testcase classname="pile.qui.deborde.HelloWorldControllerTests" name="testSomething" time="1.833" />
-  <system-out><![CDATA[--Output from testSomething--
-]]></system-out>
-  <system-err><![CDATA[--Output from testSomething--
-]]></system-err>
-</testsuite>
