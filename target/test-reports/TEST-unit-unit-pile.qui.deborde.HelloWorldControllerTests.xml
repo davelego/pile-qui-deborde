@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="a210pc012" name="pile.qui.deborde.HelloWorldControllerTests" tests="1" time="1.894" timestamp="2013-01-16T14:14:32">
+<testsuite errors="0" failures="0" hostname="a210pc012" name="pile.qui.deborde.HelloWorldControllerTests" tests="1" time="1.624" timestamp="2013-01-16T15:45:16">
   <properties />
-  <testcase classname="pile.qui.deborde.HelloWorldControllerTests" name="testSomething" time="1.858" />
+  <testcase classname="pile.qui.deborde.HelloWorldControllerTests" name="testSomething" time="1.614" />
   <system-out><![CDATA[--Output from testSomething--
 ]]></system-out>
   <system-err><![CDATA[--Output from testSomething--

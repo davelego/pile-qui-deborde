@@ -1,9 +1,111 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-  <testsuite errors="0" failures="0" hostname="a210pc012" id="0" name="HelloWorldControllerTests" package="pile.qui.deborde" tests="1" time="1.894" timestamp="2013-01-16T14:14:32">
+  <testsuite errors="0" failures="1" hostname="a210pc012" id="0" name="AnswerTests" package="pile.qui.deborde" tests="1" time="0.64" timestamp="2013-01-16T15:45:13">
       <properties />
 
-      <testcase classname="pile.qui.deborde.HelloWorldControllerTests" name="testSomething" time="1.858" />
+      <testcase classname="pile.qui.deborde.AnswerTests" name="testSomething" time="0.23">
+          <failure message="junit.framework.AssertionFailedError: Implement me" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: junit.framework.AssertionFailedError: Implement me
+	at pile.qui.deborde.AnswerTests.testSomething(AnswerTests.groovy:15)
+</failure>
+
+      </testcase>
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="1" hostname="a210pc012" id="1" name="AuthorTests" package="pile.qui.deborde" tests="1" time="0.44" timestamp="2013-01-16T15:45:15">
+      <properties />
+
+      <testcase classname="pile.qui.deborde.AuthorTests" name="testSomething" time="0.26">
+          <failure message="junit.framework.AssertionFailedError: Implement me" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: junit.framework.AssertionFailedError: Implement me
+	at pile.qui.deborde.AuthorTests.testSomething(AuthorTests.groovy:15)
+</failure>
+
+      </testcase>
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="1" hostname="a210pc012" id="2" name="BadgesTests" package="pile.qui.deborde" tests="1" time="0.35" timestamp="2013-01-16T15:45:14">
+      <properties />
+
+      <testcase classname="pile.qui.deborde.BadgesTests" name="testSomething" time="0.18">
+          <failure message="junit.framework.AssertionFailedError: Implement me" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: junit.framework.AssertionFailedError: Implement me
+	at pile.qui.deborde.BadgesTests.testSomething(BadgesTests.groovy:15)
+</failure>
+
+      </testcase>
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="1" hostname="a210pc012" id="3" name="CommentTests" package="pile.qui.deborde" tests="1" time="1.449" timestamp="2013-01-16T15:45:12">
+      <properties />
+
+      <testcase classname="pile.qui.deborde.CommentTests" name="testSomething" time="1.209">
+          <failure message="junit.framework.AssertionFailedError: Implement me" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: junit.framework.AssertionFailedError: Implement me
+	at pile.qui.deborde.CommentTests.testSomething(CommentTests.groovy:10)
+</failure>
+
+      </testcase>
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="a210pc012" id="4" name="HelloWorldControllerTests" package="pile.qui.deborde" tests="1" time="1.624" timestamp="2013-01-16T15:45:16">
+      <properties />
+
+      <testcase classname="pile.qui.deborde.HelloWorldControllerTests" name="testSomething" time="1.614" />
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="1" hostname="a210pc012" id="5" name="QuestionTests" package="pile.qui.deborde" tests="1" time="0.79" timestamp="2013-01-16T15:45:15">
+      <properties />
+
+      <testcase classname="pile.qui.deborde.QuestionTests" name="testSomething" time="0.21">
+          <failure message="junit.framework.AssertionFailedError: Implement me" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: junit.framework.AssertionFailedError: Implement me
+	at pile.qui.deborde.QuestionTests.testSomething(QuestionTests.groovy:15)
+</failure>
+
+      </testcase>
+
+      <system-out><![CDATA[--Output from testSomething--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="1" hostname="a210pc012" id="6" name="TagsTests" package="pile.qui.deborde" tests="1" time="0.32" timestamp="2013-01-16T15:45:14">
+      <properties />
+
+      <testcase classname="pile.qui.deborde.TagsTests" name="testSomething" time="0.11">
+          <failure message="junit.framework.AssertionFailedError: Implement me" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: junit.framework.AssertionFailedError: Implement me
+	at pile.qui.deborde.TagsTests.testSomething(TagsTests.groovy:15)
+</failure>
+
+      </testcase>
 
       <system-out><![CDATA[--Output from testSomething--
 ]]></system-out>

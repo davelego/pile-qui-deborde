@@ -1,5 +1,5 @@
 Testsuite: pile.qui.deborde.HelloWorldControllerTests
-Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 1,894 sec
+Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 1,624 sec
 ------------- Standard Output ---------------
 --Output from testSomething--
 ------------- ---------------- ---------------
@@ -7,4 +7,4 @@ Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 1,894 sec
 --Output from testSomething--
 ------------- ---------------- ---------------
 
-Testcase: testSomething took 1,858 sec
+Testcase: testSomething took 1,614 sec
