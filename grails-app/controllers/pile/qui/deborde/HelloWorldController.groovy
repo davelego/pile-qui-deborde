@@ -4,7 +4,7 @@ class HelloWorldController {
 
     def index() { 
 		
-		render "Hello World Bros !"
+		render "Hello World Bros 2 !"
 		
 	}
 }
