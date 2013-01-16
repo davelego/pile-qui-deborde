@@ -7,6 +7,6 @@ package pile.qui.deborde
 class HelloWorldControllerTests {
 
     void testSomething() {
-       assertTrue(true);
+       assertTrue(true)
     }
 }
