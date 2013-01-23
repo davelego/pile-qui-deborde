@@ -1,12 +1,17 @@
 package pile.qui.deborde
 
+import java.util.Date;
+
 class Comment {
 	
 	String body
+	Date date
+
+	static belongsTo = [author:Member]
 	
-	//Author author
-	static belongsTo = [author:Author]
+	static constraints = {
+		body(blank:false)
+		date(blank:false)
+	}
 	
-    static constraints = {
-    }
 }

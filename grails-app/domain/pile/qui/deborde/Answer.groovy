@@ -1,15 +1,21 @@
 package pile.qui.deborde
 
+import java.util.Date;
+
 class Answer {
 	
-	String body 
+	String body
+	Date date
+
 	int notationUp = 0
 	int notationDown = 0
 	boolean topansewer = false;
 	
-	//author of the Answer
-	static belongsTo = [author:Author]
+	static belongsTo = [question:Question, author:Member]
 	
-    static constraints = {
-    }
+	static constraints = {
+		body(blank:false)
+		date(blank:false)
+	}
+	
 }

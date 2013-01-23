@@ -8,8 +8,8 @@ import org.junit.*
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
-@TestFor(Author)
-class AuthorTests {
+@TestFor(Tag)
+class TagTests {
 
     void testSomething() {
        assertTrue(true)

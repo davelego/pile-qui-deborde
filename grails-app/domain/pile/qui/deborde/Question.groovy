@@ -4,18 +4,16 @@ class Question {
 	
 	String title
 	String body
-	
 	int notationUp = 0
 	int notationDown = 0 
+	Date date
 	
-	//List<Answer> answers
-	//List<Comment> comments
-	//List<Tags> tags
-	static hasMany = [answers:Answer, comments:Comment, tags:Tags]
-	
-	//Author author
-	static belongsTo = [author:Author]
+	static hasMany = [answers:Answer, comments:Comment, tags:Tag]
+	static belongsTo = [author:Member]
 	
     static constraints = {
+		title(blank:false)
+		body(blank:false)
+		date(blank:false)
     }
 }
