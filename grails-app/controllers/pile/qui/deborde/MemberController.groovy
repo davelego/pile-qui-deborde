@@ -2,5 +2,7 @@ package pile.qui.deborde
 
 class MemberController {
 
-    static scaffold = true
+    def index () {
+		render (view: "NewMemberView.gsp") 
+	}
 }
