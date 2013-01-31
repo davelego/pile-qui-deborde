@@ -8,14 +8,16 @@ class Member {
 	String bio
 	String website
 	String photoPath;
-	Date inscriptionDate;
+	Date dateNaissance;
+	Date dateInscription;
 	
 	static hasMany =  [givenAnswers:Answer, questions:Question]
 	
     static constraints = {
 		firstName(blank:false)
 		lastName(blank:false)
-		inscriptionDate(blank:false)
+		dateNaissance(blank:false)
+		dateInscription(blank:false)
 		email(blank:false, unique:true, email:true)
 		website(url:true)
     }

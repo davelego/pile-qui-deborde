@@ -10,7 +10,7 @@
 		<div id="container">			
 			<g:form name="formnewmember">	
 				<fieldset>
-					<legend>Please, fill the following form :</legend>
+					<legend>New member, please fill the following form :</legend>
 					<p class="first">					
 						<label for="firstname">First name</label>
 						<g:textField name="firstname" type="text" size="30"/>					
@@ -24,6 +24,10 @@
 						<g:textField type="text" name="email" size="30" />				
 					</p>
 					<p>
+						<label for="birthdate">Birth date</label>
+						<g:datePicker name="birthdate" precision="day"/>
+					</p>
+					<p>
 						<label for="bio">Bio</label>
 						<g:textArea name="bio" cols="30" rows="10" />
 					</p>	
@@ -32,14 +36,14 @@
 						<g:textField type="text" name="website" size="30" />										
 					</p>
 					<p>
-						<label for="">Avatar</label>
-						<g:textField type="text" name="website" size="30" />
+						<label for="avatar">Avatar</label>
+						<g:textField type="text" name="avatar" size="30" />
 					</p>	
 					
 					<p class="submit">
-						<g:submitButton name="Valider"/>
+						<g:actionSubmit value="Valider" action="saveNewMember"/>
 					</p>	
 				</fieldset>								
-			</g:form>	
+			</g:form>
 		</div>
 	</body>

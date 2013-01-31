@@ -131,6 +131,7 @@ li {
 #formnewmember input#lastname{background:#fff url(../images/form_name.gif) no-repeat 5px 50%;}
 #formnewmember input#email{background:#fff url(../images/form_email.gif) no-repeat 5px 50%;}
 #formnewmember input#website{background:#fff url(../images/form_url.gif) no-repeat 5px 50%;}
+#formnewmember input#avatar{background:#fff url(../images/form_url.gif) no-repeat 5px 50%;}
 #formnewmember textarea#bio{background:#fff url(../images/form_note.gif) no-repeat 5px 6px;}
 
 #formnewmember textarea {
