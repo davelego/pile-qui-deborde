@@ -112,6 +112,7 @@
 			<!--  Nouvelle div presentant les actions possibles -->
 			<div id ="page-body" role="main">
 				<g:link controller="member">Register</g:link>
+				<g:link controller="question">Post a new question</g:link>
 			</div>
 
 			<div id="controller-list" role="navigation" style="padding:1em;">

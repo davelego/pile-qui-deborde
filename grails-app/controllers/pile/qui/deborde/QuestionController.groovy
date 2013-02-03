@@ -2,5 +2,11 @@ package pile.qui.deborde
 
 class QuestionController {
 
-    static scaffold = true
+    def index () {
+		render (view: "NewQuestionView.gsp") 
+	}
+	
+	def saveNewQuestion () {
+		render params
+	}
 }

@@ -41,7 +41,7 @@
 					</p>	
 					
 					<p class="submit">
-						<g:actionSubmit value="Valider" action="saveNewMember"/>
+						<g:actionSubmit value="Submit" action="saveNewMember"/>
 					</p>	
 				</fieldset>								
 			</g:form>
