@@ -32,7 +32,7 @@
 						<g:textArea name="bio" cols="30" rows="10" />
 					</p>	
 					<p>
-						<label for="web">Web site</label>				
+						<label for="website">Web site</label>				
 						<g:textField type="text" name="website" size="30" />										
 					</p>
 					<p>
