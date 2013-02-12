@@ -15,13 +15,23 @@ class MemberController {
 		
 		def pseudo = params.get("pseudo")
 		def password = params.get("password")
-		
+		log.error(pseudo + password)
 		def user = Member.findByPseudoAndPassword(pseudo,password)
 		if( user ) {
 			session.user = user
-			render ' logged user : ' + session.user
+			//render ' logged user : ' + session.user
+			redirect(uri:"/")
+		}
+		else{
+			render 'fail'
 		}
 	}
+	
+	def logout = {
+		session.user = null
+		redirect(uri:"/")
+	  }
+	
 	
 	def list() {
 		 def listMembers = Member.list()
