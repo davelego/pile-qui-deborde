@@ -3,9 +3,19 @@ import org.springframework.web.context.request.RequestContextHolder
 
 class QuestionController {
 
-    def index () {
+	def beforeInterceptor = [action:this.&auth, except:"list"]
+	
+	  def auth() {
+		if(!session.user) {
+		  redirect(controller:"member", action:"index")
+		  return false
+		}
+	  }
+	
+	def index () {
 		render (view: "NewQuestionView.gsp") 
 	}
+	
 	
 	def list() {
 
