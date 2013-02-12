@@ -3,7 +3,11 @@ package pile.qui.deborde
 class MemberController {
 
     def index () {
-		render (view: "NewMemberView.gsp") 
+		render (view: "login.gsp") 
+	}
+	
+	def register () {
+		render (view: "NewMemberView.gsp")
 	}
 	
 	def list() {

@@ -24,7 +24,10 @@ class QuestionController {
 		def Question q = new Question(title: params.get("title"),
 									  body:  params.get("body"),
 									  date:  new Date());
-						
+								  	  
+
+		
+
 		if (q.validate()) {
 			q.save()
 			redirect(action: "list")
