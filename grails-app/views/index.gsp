@@ -64,6 +64,11 @@
 				list-style-position: inside;
 				margin: 0.25em 0;
 			}
+			
+			#loginHeader {
+				  float: right;
+				  color: #fff;
+				}
 
 			@media screen and (max-width: 480px) {
 				#status {
@@ -77,8 +82,14 @@
 				#page-body h1 {
 					margin-top: 0;
 				}
+				
+				
 			}
 		</style>
+		  <div id="loginHeader">
+		    <g:loginControl />
+		  </div>
+		
 	</head>
 	<body>
 		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>

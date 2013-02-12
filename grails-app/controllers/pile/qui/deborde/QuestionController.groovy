@@ -14,7 +14,7 @@ class QuestionController {
 			render "Aucune question"
 		} else {
 			for (Question q : liste) {
-				render "Author : " + q.author.pseudo + '<br/'>
+				render "Author : " + q.author.pseudo + '<br/>'
 				render "Title : "  + q.title         + '<br/>'
 				render "Body : "   + q.body          + '<br/>'
 				render "Date : "   + q.date          + '<br/><br/>'
