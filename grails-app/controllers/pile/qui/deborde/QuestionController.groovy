@@ -3,25 +3,24 @@ import org.springframework.web.context.request.RequestContextHolder
 
 class QuestionController {
 
-	def beforeInterceptor = [action:this.&auth, except:"list"]
-	
-	  def auth() {
-		if(!session.user) {
-		  redirect(controller:"member", action:"index")
-		  return false
-		}
-	  }
-	
-	def index () {
-		render (view: "NewQuestionView.gsp") 
+
+    def index () {
+		render (view: "NewQuestionView") 
 	}
 	
+	def beforeInterceptor = [action:this.&auth, except:"list"]
 	
+	def auth() {
+		if (!session.user) {
+			redirect(controller:"member", action:"index")
+			return false
+		}
+	}
+		
 	def list() {
 
 		def listQuestions = Question.list()
 		render(view: "ListQuestionsView", model:[questions: listQuestions])
-
 	}
 	
 	def saveNewQuestion () {
@@ -43,5 +42,17 @@ class QuestionController {
 			render(view: "NewQuestionView", model:[question: q])
 		  }
 		}
+	}
+	
+	def edit () {
+		def questionToEdit = Question.get(params.idquestion)
+		render(view: "EditQuestionView", model:[question: questionToEdit])
+	}
+	
+	def editQuestion () {
+		def questionEdited = Question.get(params.idquestion)
+		questionEdited.body = params.get("body")
+		questionEdited.save()
+		redirect(action: "list")
 	}
 }
