@@ -24,12 +24,13 @@ class MemberController {
 	
 	def list() {
 		 def liste = Member.list()
+		 render("<a href='/pile-qui-deborde'>Retour a l\'accueil</a><br/><br/>")
 		 if (liste.size() == 0) {
 		 	render('Aucun membre dans la base')
 		 }
 		 else {
 			 for (Member m : liste) {
-				 render 'Pseudo :'             + m.pseudo		   + '<br/>'
+				 render 'Pseudo : '            + m.pseudo		   + '<br/>'
 				 render 'Password : '		   + m.password        + '<br/>'
 				 render 'First name  : '       + m.firstName       + '<br/>'
 				 render 'Last name  : '        + m.lastName        + '<br/>'
@@ -45,10 +46,18 @@ class MemberController {
 	 
 	def saveNewMember () {
 		
-		def Member m = new Member(firstName: params.get("firstname"), lastName: params.get("lastname"), pseudo: params.get("pseudo"), password: params.get("password"),
-								  email: params.get("email"), bio: params.get("bio"), website: params.get("website"),
-								  photoPath: params.get("avatar"), dateNaissance: params.get("birthdate"),
+		def Member m = new Member(firstName: params.get("firstname"), 
+								  lastName: params.get("lastname"), 
+								  pseudo: params.get("pseudo"), 
+								  password: params.get("password"),
+								  email: params.get("email"), 
+								  bio: params.get("bio"), 
+								  website: params.get("website"),
+								  photoPath: params.get("avatar"), 
+								  dateNaissance: params.get("birthdate"),
 								  dateInscription: new Date());
+		
+		// def Member m = new Member(params) Ne fonctionne pas ?
 							  
 		/* Validation des informations du nouveau membre par rapport aux contraintres */  
 		if (m.validate()) {
@@ -59,11 +68,12 @@ class MemberController {
 				redirect(action: "list")
 			}
 			else {
-				render "Les deux mots de passe saisis sont différents"
+				m.errors.rejectValue("password", 'Both password fields must be the same')
+				render(view: "NewMemberView", model:[member: m])
 			}
 			
 		} else {
-			render "Certains champs sont vides"
+			render(view: "NewMemberView", model:[member: m])
 		}
 	}
 }

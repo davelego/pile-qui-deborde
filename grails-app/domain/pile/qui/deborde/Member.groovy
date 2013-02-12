@@ -22,6 +22,6 @@ class Member {
 		password(blank:false, size: 5..15)
 		email(blank:false, unique:true, email:true)
 		website(url:true)
-		dateNaissance(blank:false)
+		dateNaissance(blank:false, max: new Date())
     }
 }
