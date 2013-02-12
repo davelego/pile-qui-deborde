@@ -7,54 +7,67 @@
 	</head>
 	
 	<body>
-		<div id="container">			
-			<g:form name="formnewmember">	
+		<div id="container">
+		
+			<g:renderErrors bean="${member}" />
+			<g:form name="formnewmember" >	
 				<fieldset>
 					<legend>New member, please fill the following form :</legend>
-					<p class="first">					
+					
+					<p class='value ${hasErrors(bean:member,field:'firstName','errors')}' >					
 						<label for="firstname">First name</label>
-						<g:textField name="firstname" type="text" size="30"/>					
+						<g:textField name="firstname" type="text" size="30" value="${member?.firstName}" />					
 					</p>
-					<p class="first">					
+					
+					<p class='value ${hasErrors(bean:member,field:'lastName','errors')}' >					
 						<label for="lastname">Last name</label>				
-						<g:textField name="lastname" type="text" size="30"/>					
+						<g:textField name="lastname" type="text" size="30" value="${member?.lastName}" />					
 					</p>
-					<p>					
+					
+					<p class='value ${hasErrors(bean:member,field:'email','errors')}'>					
 						<label for="email">Email</label>				
-						<g:textField type="text" name="email" size="30" />				
+						<g:textField type="text" name="email" size="30" value="${member?.email}" />				
 					</p>
-					<P>
+					
+					<p class='value ${hasErrors(bean:member,field:'pseudo','errors')}'>
 						<label for="pseudo">Pseudo</label>
-						<g:textField type="text" name="pseudo" size="30" />
-					</P>
-					<p>
+						<g:textField type="text" name="pseudo" size="30" value="${member?.pseudo}" />
+					</p>
+					
+					<p class='value ${hasErrors(bean:member,field:'password','errors')}'>
 						<label for="password">Password</label>
 						<g:passwordField type="password" name="password" size="30" />
 					</p>
-					<p>
+					
+					<p class='value ${hasErrors(bean:member,field:'password','errors')}'>
 						<label for="repassword">Reconfirm</label>
 						<g:passwordField type="repassword" name="repassword" size="30" />
 					</p>
-					<p>
+					
+					<p class='value ${hasErrors(bean:member,field:'birthdate','errors')}'>
 						<label for="birthdate">Birth date</label>
-						<g:datePicker name="birthdate" precision="day"/>
+						<g:datePicker name="birthdate" precision="day" value="${member?.dateNaissance}" />
 					</p>
-					<p>
+					
+					<p class='value ${hasErrors(bean:member,field:'bio','errors')}'>
 						<label for="bio">Bio</label>
-						<g:textArea name="bio" cols="30" rows="10" />
-					</p>	
-					<p>
-						<label for="website">Web site</label>				
-						<g:textField type="text" name="website" size="30" />										
+						<g:textArea name="bio" cols="30" rows="10" value="${member?.bio}" />
 					</p>
-					<p>
+						
+					<p class='value ${hasErrors(bean:member,field:'website','errors')}'>
+						<label for="website">Web site</label>				
+						<g:textField type="text" name="website" size="30" value="${member?.website}" />										
+					</p>
+					
+					<p class='value ${hasErrors(bean:member,field:'avatar','errors')}'>
 						<label for="avatar">Avatar</label>
-						<g:textField type="text" name="avatar" size="30" />
+						<g:textField type="text" name="avatar" size="30" value="${member?.photoPath}" />
 					</p>	
 					
 					<p class="submit">
 						<g:actionSubmit value="Submit" action="saveNewMember"/>
 					</p>	
+					
 				</fieldset>								
 			</g:form>
 		</div>
