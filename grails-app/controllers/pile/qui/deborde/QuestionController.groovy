@@ -1,4 +1,5 @@
 package pile.qui.deborde
+import org.springframework.web.context.request.RequestContextHolder
 
 class QuestionController {
 
@@ -13,24 +14,34 @@ class QuestionController {
 			render "Aucune question"
 		} else {
 			for (Question q : liste) {
-				render "Title : " + q.title + '<br/>'
-				render "Body : "  + q.body  + '<br/>'
-				render "Date : "  + q.date  + '<br/><br/>'
+				render "Author : " + q.author.pseudo + '<br/'>
+				render "Title : "  + q.title         + '<br/>'
+				render "Body : "   + q.body          + '<br/>'
+				render "Date : "   + q.date          + '<br/><br/>'
 			}
 		}
 	}
 	
 	def saveNewQuestion () {
-		
-		def Question q = new Question(title: params.get("title"),
-									  body:  params.get("body"),
-									  date:  new Date());
-
-		if (q.validate()) {
-			q.save()
-			redirect(action: "list")
-		} else {
+		def currentRequest = RequestContextHolder.requestAttributes
+		def pseudo
+		if(currentRequest) { 
+		  pseudo = currentRequest.session["loggedUser"]
+		  def memberList = Member.list();
+		  def member = Member.findAllByPseudo(pseudo)
+		  def Question q = new Question(title: params.get("title"),
+										body:  params.get("body"),
+										date:  new Date(),
+										author: member.get(0))
+  
+		  if (q.validate()) {
+			  q.save()
+			  redirect(action: "list")
+		  }
+		  else {
+			q.errors.rejectValue('author', 'You must be logged in order to post a question')
 			render(view: "NewQuestionView", model:[question: q])
+		  }
 		}
 	}
 }
