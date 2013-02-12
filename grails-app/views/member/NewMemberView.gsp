@@ -23,6 +23,18 @@
 						<label for="email">Email</label>				
 						<g:textField type="text" name="email" size="30" />				
 					</p>
+					<P>
+						<label for="pseudo">Pseudo</label>
+						<g:textField type="text" name="pseudo" size="30" />
+					</P>
+					<p>
+						<label for="password">Password</label>
+						<g:passwordField type="password" name="password" size="30" />
+					</p>
+					<p>
+						<label for="repassword">Reconfirm</label>
+						<g:passwordField type="repassword" name="repassword" size="30" />
+					</p>
 					<p>
 						<label for="birthdate">Birth date</label>
 						<g:datePicker name="birthdate" precision="day"/>

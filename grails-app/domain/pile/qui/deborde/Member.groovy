@@ -5,6 +5,8 @@ class Member {
 	String firstName
 	String lastName
 	String email
+	String pseudo
+	String password
 	String bio
 	String website
 	String photoPath;
@@ -16,9 +18,10 @@ class Member {
     static constraints = {
 		firstName(blank:false)
 		lastName(blank:false)
-		dateNaissance(blank:false)
-		dateInscription(blank:false)
+		pseudo(blank:false, unique:true, size: 5..15)
+		password(blank:false, size: 5..15)
 		email(blank:false, unique:true, email:true)
 		website(url:true)
+		dateNaissance(blank:false)
     }
 }
