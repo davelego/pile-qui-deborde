@@ -6,7 +6,9 @@
 	</head>
 	
 	<body>
-		<a href='/pile-qui-deborde'>Retour a l'accueil</a><br/><br/>
+	
+	
+		<g:link url="${createLinkTo(dir:'')}"><- Return to main page</g:link><br/><br/>
 	
 		<g:each var="q" in="${questions}">
 			<div>

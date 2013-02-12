@@ -7,7 +7,10 @@
 	</head>
 	
 	<body>
-		<div id="container">			
+		<div id="container">
+		
+			<g:link url="${createLinkTo(dir:'')}"><- Return to main page</g:link><br/><br/>
+				
 			<g:form name="formLogin">	
 				<fieldset>
 					<legend>Please login :</legend>

@@ -9,7 +9,7 @@
 	<body>
 		<div id="container">
 		
-			<a href="/pile-qui-deborde/"><- Return to main page</a>
+			<g:link url="${createLinkTo(dir:'')}"><- Return to main page</g:link><br/><br/>
 		
 			<g:renderErrors bean="${question}" />
 			<g:form name="formeditquestion" params="${[idquestion: question.id]}">	
