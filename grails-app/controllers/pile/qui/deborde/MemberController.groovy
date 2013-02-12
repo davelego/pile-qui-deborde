@@ -16,16 +16,10 @@ class MemberController {
 		def pseudo = params.get("pseudo")
 		def password = params.get("password")
 		
-		def listMember = Member.executeQuery("Select pseudo from Member where pseudo = '${pseudo}' and password = '${password}'")
-		
-		if( !listMember.empty ) {
-			def currentRequest = RequestContextHolder.requestAttributes
-			if(currentRequest) { // we have been called from a web request processing thread
-			  // currentRequest is an instance of GrailsWebRequest
-			  currentRequest.session["loggedUser"] = listMember[0];
-			  log.error(currentRequest.session["loggedUser"]);
-			}
-			render ' logged user : ' + currentRequest.session["loggedUser"]
+		def user = Member.findByPseudoAndPassword(pseudo,password)
+		if( user ) {
+			session.user = user
+			render ' logged user : ' + session.user
 		}
 	}
 	

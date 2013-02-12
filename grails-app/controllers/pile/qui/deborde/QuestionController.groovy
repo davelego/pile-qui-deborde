@@ -14,15 +14,13 @@ class QuestionController {
 	
 	def saveNewQuestion () {
 		def currentRequest = RequestContextHolder.requestAttributes
-		def pseudo
-		if(currentRequest) { 
-		  pseudo = currentRequest.session["loggedUser"]
-		  def memberList = Member.list()
-		  def member = Member.findAllByPseudo(pseudo)
+		
+		if(currentRequest) {
+			
 		  def Question q = new Question(title: params.get("title"),
 										body:  params.get("body"),
 										date:  new Date(),
-										author: member.get(0))
+										author: session.user)
   
 		  if (q.validate()) {
 			  q.save()
