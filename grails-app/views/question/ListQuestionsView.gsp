@@ -14,8 +14,12 @@
 				Author : ${q.author.pseudo} <br/>
 				Title  : ${q.title}         <br/>
 				Tags   : ${q.tags}          <br/>
-				Body   : ${q.body}          <br/><br/>
+				Body   : ${q.body}          <br/>
+				<g:form controller="question" params="${[idquestion: q.id]}">
+					<g:actionSubmit value="Edit" action="edit" /><br/><br/>
+				</g:form>
 			</div>
+			
 		</g:each>
 	
 	</body>

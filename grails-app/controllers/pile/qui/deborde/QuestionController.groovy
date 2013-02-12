@@ -4,7 +4,7 @@ import org.springframework.web.context.request.RequestContextHolder
 class QuestionController {
 
     def index () {
-		render (view: "NewQuestionView.gsp") 
+		render (view: "NewQuestionView") 
 	}
 	
 	def list() {
@@ -31,5 +31,17 @@ class QuestionController {
 			render(view: "NewQuestionView", model:[question: q])
 		  }
 		}
+	}
+	
+	def edit () {
+		def questionToEdit = Question.get(params.idquestion)
+		render(view: "EditQuestionView", model:[question: questionToEdit])
+	}
+	
+	def editQuestion () {
+		def questionEdited = Question.get(params.idquestion)
+		questionEdited.body = params.get("body")
+		questionEdited.save()
+		redirect(action: "list")
 	}
 }
