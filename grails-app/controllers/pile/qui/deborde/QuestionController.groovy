@@ -1,4 +1,5 @@
 package pile.qui.deborde
+import org.springframework.web.context.request.RequestContextHolder
 
 class QuestionController {
 
@@ -20,19 +21,31 @@ class QuestionController {
 	}
 	
 	def saveNewQuestion () {
-		
-		def Question q = new Question(title: params.get("title"),
-									  body:  params.get("body"),
-									  date:  new Date());
-								  	  
-
-		
-
-		if (q.validate()) {
-			q.save()
-			redirect(action: "list")
-		} else {
-			render "Certains champs sont vides"
+		def currentRequest = RequestContextHolder.requestAttributes
+		def pseudo
+		if(currentRequest) { 
+		  pseudo = currentRequest.session["loggedUser"]
+		  def memberList = Member.list();
+		  def member = Member.findAllByPseudo(pseudo)
+		  def Question q = new Question(title: params.get("title"),
+										body:  params.get("body"),
+										date:  new Date(),
+										author: member.get(0))
+										  
+  
+		  
+  
+		  if (q.validate()) {
+			  q.save()
+			  redirect(action: "list")
+		  } else {
+			  render "Certains champs sont vides"
+		  }
 		}
+		else {
+			render "You must be logged in to access this area, bro !"
+		}
+		
+		
 	}
 }

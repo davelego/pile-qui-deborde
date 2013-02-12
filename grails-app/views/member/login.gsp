@@ -20,7 +20,7 @@
 						<g:passwordField type="password" name="password" size="30" />
 					</p>					
 					<p class="submit">
-						<g:actionSubmit value="Submit" action="saveNewMember"/>
+						<g:actionSubmit value="Submit" action="login"/>
 					</p>	
 				</fieldset>								
 			</g:form>
