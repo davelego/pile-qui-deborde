@@ -10,6 +10,18 @@ class MemberController {
 		render (view: "NewMemberView.gsp")
 	}
 	
+	def login () {
+		
+		def pseudo = params.get("pseudo")
+		def password = params.get("password")
+		
+		def listMember = Member.executeQuery("Select id from Member where pseudo = ${pseudo} and password = ${password};")
+		
+		if( !listMember.empty ) {
+			render 'yay bro !'
+		}
+	}
+	
 	def list() {
 		 def liste = Member.list()
 		 render("<a href='/pile-qui-deborde'>Retour a l\'accueil</a><br/><br/>")
