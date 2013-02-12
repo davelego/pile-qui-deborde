@@ -12,8 +12,8 @@ class Question {
 	static belongsTo = [author:Member]
 	
     static constraints = {
-		title(blank:false)
-		body(blank:false)
+		title(blank:false, size: 10..280)
+		body(blank:false, minSize: 50)
 		date(blank:false)
     }
 }

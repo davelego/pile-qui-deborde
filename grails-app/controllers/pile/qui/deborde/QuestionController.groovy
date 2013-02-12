@@ -8,6 +8,7 @@ class QuestionController {
 	
 	def list() {
 		def liste = Question.list()
+		render("<a href='/pile-qui-deborde'>Retour a l\'accueil</a><br/><br/>")
 		if (liste.size() == 0 ) {
 			render "Aucune question"
 		} else {
@@ -24,15 +25,12 @@ class QuestionController {
 		def Question q = new Question(title: params.get("title"),
 									  body:  params.get("body"),
 									  date:  new Date());
-								  	  
-
-		
 
 		if (q.validate()) {
 			q.save()
 			redirect(action: "list")
 		} else {
-			render "Certains champs sont vides"
+			render(view: "NewQuestionView", model:[question: q])
 		}
 	}
 }
