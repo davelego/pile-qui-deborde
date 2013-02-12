@@ -23,31 +23,15 @@ class MemberController {
 			if(currentRequest) { // we have been called from a web request processing thread
 			  // currentRequest is an instance of GrailsWebRequest
 			  currentRequest.session["loggedUser"] = listMember[0];
+			  log.error(currentRequest.session["loggedUser"]);
 			}
 			render ' logged user : ' + currentRequest.session["loggedUser"]
 		}
 	}
 	
 	def list() {
-		 def liste = Member.list()
-		 render("<a href='/pile-qui-deborde'>Retour a l\'accueil</a><br/><br/>")
-		 if (liste.size() == 0) {
-		 	render('Aucun membre dans la base')
-		 }
-		 else {
-			 for (Member m : liste) {
-				 render 'Pseudo : '            + m.pseudo		   + '<br/>'
-				 render 'Password : '		   + m.password        + '<br/>'
-				 render 'First name  : '       + m.firstName       + '<br/>'
-				 render 'Last name  : '        + m.lastName        + '<br/>'
-				 render 'Email  : '            + m.email           + '<br/>'
-				 render 'Bio  : '              + m.bio             + '<br/>'
-				 render 'Website  : '          + m.website         + '<br/>'
-				 render 'Avatar : '            + m.photoPath       + '<br/>'
-				 render 'Birth date  : '       + m.dateNaissance   + '<br/>'
-				 render 'Inscription date  : ' + m.dateInscription + '<br/><br/>'
-			 }
-		 }
+		 def listMembers = Member.list()
+		 render(view: "ListMembersView", model:[members: listMembers])
 	}
 	 
 	def saveNewMember () {

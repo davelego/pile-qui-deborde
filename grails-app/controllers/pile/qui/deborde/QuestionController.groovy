@@ -8,18 +8,8 @@ class QuestionController {
 	}
 	
 	def list() {
-		def liste = Question.list()
-		render("<a href='/pile-qui-deborde'>Retour a l\'accueil</a><br/><br/>")
-		if (liste.size() == 0 ) {
-			render "Aucune question"
-		} else {
-			for (Question q : liste) {
-				render "Author : " + q.author.pseudo + '<br/'>
-				render "Title : "  + q.title         + '<br/>'
-				render "Body : "   + q.body          + '<br/>'
-				render "Date : "   + q.date          + '<br/><br/>'
-			}
-		}
+		def listQuestions = Question.list()
+		render(view: "ListQuestionsView", model:[questions: listQuestions])
 	}
 	
 	def saveNewQuestion () {
@@ -27,7 +17,7 @@ class QuestionController {
 		def pseudo
 		if(currentRequest) { 
 		  pseudo = currentRequest.session["loggedUser"]
-		  def memberList = Member.list();
+		  def memberList = Member.list()
 		  def member = Member.findAllByPseudo(pseudo)
 		  def Question q = new Question(title: params.get("title"),
 										body:  params.get("body"),
