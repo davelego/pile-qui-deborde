@@ -10,7 +10,7 @@
 	
 		<div id="container">
 		
-			<g:link url="${createLinkTo(dir:'')}"><- Return to main page</g:link><br/><br/>
+			<a href="${createLink(uri: '/', absolute: true)}"><- Return to main page</a><br/><br/>
 		
 			<g:renderErrors bean="${member}" />
 			<g:form name="formnewmember" >	

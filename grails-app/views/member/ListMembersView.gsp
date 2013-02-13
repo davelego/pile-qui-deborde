@@ -2,12 +2,12 @@
 <html>
 	<head>
 		<meta name="layout" content="main"/>
-		<title>List of all the questions</title>
+		<title>List of all the members</title>
 	</head>
 	
 	<body>
 	
-		<g:link url="${createLinkTo(dir:'')}"><- Return to main page</g:link><br/><br/>
+		<a href="${createLink(uri: '/', absolute: true)}"><- Return to main page</a><br/><br/>
 		
 		<g:each var="m" in="${members}">
 			<div>

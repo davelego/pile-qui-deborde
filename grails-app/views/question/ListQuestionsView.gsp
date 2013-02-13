@@ -7,8 +7,7 @@
 	
 	<body>
 	
-	
-		<g:link url="${createLinkTo(dir:'')}"><- Return to main page</g:link><br/><br/>
+		<a href="${createLink(uri: '/', absolute: true)}"><- Return to main page</a><br/><br/>
 	
 		<g:each var="q" in="${questions}">
 			<div>
