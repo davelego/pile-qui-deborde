@@ -11,7 +11,7 @@
 		
 			<a href="${createLink(uri: '/', absolute: true)}"><- Return to main page</a><br/><br/>
 		
-			<g:renderErrors bean="${question}" />
+			<g:renderErrors bean="${answer}" />
 			<g:form name="formnewquestion">	
 				<fieldset>
 					<legend>Please fill the following fields :</legend>
@@ -32,7 +32,7 @@
 					</p>
 					
 					<p class="submit">
-						<g:actionSubmit value="Submit" action="saveNewQuestion"/>
+						<g:actionSubmit value="Submit" action="save"/>
 					</p>
 					
 				</fieldset>								

@@ -14,7 +14,7 @@ class Answer {
 	static belongsTo = [question:Question, author:Member]
 	
 	static constraints = {
-		body(blank:false)
+		body(blank:false, minSize: 20)
 		date(blank:false)
 	}
 	

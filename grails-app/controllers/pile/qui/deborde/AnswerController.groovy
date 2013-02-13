@@ -3,8 +3,54 @@ package pile.qui.deborde
 import org.springframework.dao.DataIntegrityViolationException
 
 class AnswerController {
+
+	/* Call from the list of the questions and redirect the user on a page */
+	/* where he can answer to the selected question                        */
+	def answer () {
+		def questionToAnswer = Question.get(params.idquestion)
+		render(view: "NewAnswerView", model:[question: questionToAnswer])
+	}
 	
-	static scaffold = true
+	/* List all the answers about a given question */
+	def list () {
+		def q = Question.get(params.idquestion)
+		def listAnswers = q.answers
+		
+		render("<a href=\"${createLink(uri: '/', absolute: true)}\"><- Return to main page</a><br/><br/>")
+		
+		if (listAnswers.size() == 0) {
+			render("Pas de reponse pour cette question !")
+			
+		} else {
+		
+			for (Answer a : listAnswers) {
+				render("Body : " + a.body + "<br/>")
+				render("Date : " + a.date + "<br/><br/>")
+			}
+		}
+	}
+	
+	/* Save the answer in the database */
+	def save () {
+		
+		def questionToAnswer = Question.get(params.idquestion)
+		
+		def Answer a = new Answer(body: params.get("body"),
+							      date: new Date(),
+								  question: questionToAnswer,
+								  author: questionToAnswer.author)
+		
+		if (a.validate()) {
+			a.save()
+			redirect(action: "list", params: [idquestion: questionToAnswer.id])
+		}
+		else {
+			render(view: "NewAnswerView", model:[question: questionToAnswer, answer: a])
+		}
+		
+	}
+	
+//	static scaffold = true
 
 //    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 //
