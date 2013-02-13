@@ -2,12 +2,12 @@ package pile.qui.deborde
 
 class Tag {
 
-	String mot
+	String word
 	static int nbUsed = 0
 	String description
 	
     static constraints = {
-		mot(blank:false)
+		word(blank:false)
 		description(blank:false)
     }
 }

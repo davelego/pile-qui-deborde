@@ -121,6 +121,8 @@
 				<g:link controller="member" action="list">List all the members</g:link>
 				<g:link controller="question">Post a new question</g:link>
 				<g:link controller="question" action="list">List all the questions</g:link>
+				<g:link controller="tag">Add a new tag</g:link>
+				<g:link controller="tag" action="list">List all the tags</g:link>
 			</div>
 
 			<div id="controller-list" role="navigation" style="padding:1em;">
