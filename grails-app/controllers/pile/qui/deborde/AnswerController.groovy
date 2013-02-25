@@ -42,7 +42,7 @@ class AnswerController {
 		
 		if (a.validate()) {
 			a.save()
-			redirect(action: "list", params: [idquestion: questionToAnswer.id])
+			redirect(controller:"question", action: "detail", params: [id: questionToAnswer.id])
 		}
 		else {
 			render(view: "NewAnswerView", model:[question: questionToAnswer, answer: a])

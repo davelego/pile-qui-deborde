@@ -28,6 +28,10 @@ class QuestionController {
 		render(view: "ListQuestionsView", model:[questions: listQuestions])
 	}
 	
+	def detail() {
+		render(view: "DetailQuestionView", model:[q:Question.get(params.id)])
+	}
+	
 	/* Save in database a new question posted by a member */
 	def save () {
 		def currentRequest = RequestContextHolder.requestAttributes

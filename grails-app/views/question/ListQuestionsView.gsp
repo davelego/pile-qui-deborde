@@ -11,22 +11,10 @@
 	
 		<g:each var="q" in="${questions}">
 			<div>
-				Id     : ${q.id}            <br/>
-				Author : ${q.author.pseudo} <br/>
-				Title  : ${q.title}         <br/>
-				Tags   : ${q.tags}          <br/>
-				Body   : ${q.body}          <br/>
-				<g:form controller="question" params="${[idquestion: q.id]}">
-					<g:actionSubmit value="Edit"   action="edit" />
-				</g:form>
-				<g:form controller="answer" params="${[idquestion: q.id]}">
-					<g:actionSubmit value="Answer" action="answer"/>
-				</g:form>
-				<g:form controller="answer" params="${[idquestion: q.id]}">
-					<g:actionSubmit value="List answers" action="list"/>
-				</g:form><br/>
-			</div>
-			
+				<g:link action="detail" id="${q.id}">Title  : ${q.title}</g:link>         <br/>
+				by : ${q.author.pseudo} <br/>				
+				Tags   :  <g:each var="t" in="${q.tags}"> ${t.word}</g:each>           <br/>
+			</div> 
 		</g:each>
 	
 	</body>
