@@ -1,4 +1,6 @@
 package pile.qui.deborde
+import java.util.logging.Logger;
+
 import org.springframework.web.context.request.RequestContextHolder
 
 class QuestionController {
@@ -31,18 +33,33 @@ class QuestionController {
 		def currentRequest = RequestContextHolder.requestAttributes
 		
 		if (currentRequest) {
-			
+		  def tags = params.get("tags");
+		  tags = tags.toString();
+		  def  tagsArray = tags.split(" ");
+		  def listTags = []
+		  for (String tag : tagsArray) {
+			 if(Tag.findAllByWord(tag)) {
+			  	listTags.add(Tag.findAllByWord(tag)[0])
+			 }
+			 else{
+				print tag
+				listTags = null;
+			 	break;
+			 }
+		  }
 		  def Question q = new Question(title: params.get("title"),
 										body:  params.get("body"),
 										date:  new Date(),
-										author: session.user)
+										author: session.user,
+										tags: listTags)
   
 		  if (q.validate()) {
 			  q.save()
 			  redirect(action: "list")
 		  }
 		  else {
-			q.errors.rejectValue('author', 'You must be logged in order to post a question')
+			//q.errors.rejectValue('author', 'You must be logged in order to post a question')
+			q.errors.rejectValue('tags','one of your tags is wrong')
 			render(view: "NewQuestionView", model:[question: q])
 		  }
 		}
