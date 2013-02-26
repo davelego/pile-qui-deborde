@@ -10,14 +10,13 @@
 		<a href="${createLink(uri: '/', absolute: true)}"><- Return to main page</a><br/><br/>
 	
 		
-			<div>
+			<div class="content">
 				<h2>Question</h2> <br/>
-				<g:link action="detail" id="${q.id}">Title  : ${q.title}</g:link>       <br/>
-				by : ${q.author.pseudo} 												<br/>				
-				Tags   :  <g:each var="t" in="${q.tags}"> ${t.word} </g:each>           <br/>
+				Title  : <g:link action="detail" id="${q.id}">${q.title}</g:link>       <br/> <br/>			
+				Tags   :  <g:each var="t" in="${q.tags}"> <span class="tag">${t.word}</span> </g:each>           <br/>
 				
-				<p>${q.body}</p>
-				
+				<div class="questionBody">${q.body}</div>
+				by : ${q.author.pseudo} 												<br/>	
 				<br/>
 				<g:if test="${session.user.id == q.author.id }">
 					<g:link controller="question" action="edit" params="${[idquestion: q.id]}">

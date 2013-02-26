@@ -10,10 +10,10 @@
 		<a href="${createLink(uri: '/', absolute: true)}"><- Return to main page</a><br/><br/>
 	
 		<g:each var="q" in="${questions}">
-			<div>
-				<g:link action="detail" id="${q.id}">Title  : ${q.title}</g:link>         <br/>
-				by : ${q.author.pseudo} <br/>				
-				Tags   :  <g:each var="t" in="${q.tags}"> ${t.word}</g:each>           <br/>
+			<div class="questionList">
+				Title  : <g:link action="detail" id="${q.id}">${q.title}</g:link>         <br/>
+				<div class="questionAuthor"> by : ${q.author.pseudo} </div>	 <br/>			
+				<div class="questionTag"> Tags   :  <g:each var="t" in="${q.tags}"> <span class="tag"> ${t.word} </span></g:each>   </div>        <br/>
 			</div> 
 		</g:each>
 	
