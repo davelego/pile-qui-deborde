@@ -12,7 +12,7 @@ class QuestionController {
 		render (view: "NewQuestionView") 
 	}
 	
-	def beforeInterceptor = [action:this.&auth, except:"list"]
+	def beforeInterceptor = [action:this.&auth, except:'list']
 	
 	/* Allow the authentification */
 	def auth() {

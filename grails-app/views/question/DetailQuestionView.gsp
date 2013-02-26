@@ -19,6 +19,16 @@
 				<p>${q.body}</p>
 				
 				<br/>
+				<g:if test="${session.user.id == q.author.id }">
+					<g:link controller="question" action="edit" params="${[idquestion: q.id]}">
+						<input value="Edit"/>
+					</g:link>
+				</g:if>
+				<g:link controller="answer" action="answer" params="${[idquestion: q.id]}">
+					<input value="Answer"/>
+				</g:link>
+				
+				
 				
 				<div>
 					<h2>Answers</h2> <br/>
@@ -28,15 +38,6 @@
 					</g:each>
 				</div>
 
-				<g:link controller="question" action="edit" params="${[idquestion: q.id]}">
-					<input value="Edit"/>
-				</g:link>
-				<g:link controller="answer" action="answer" params="${[idquestion: q.id]}">
-					<input value="Answer"/>
-				</g:link>
-				<g:link controller="answer" action="list" params="${[idquestion: q.id]}">
-					<input value="List answers"/>
-				</g:link><br/>
 			</div>
 			
 		

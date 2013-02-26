@@ -38,7 +38,7 @@ class AnswerController {
 		def Answer a = new Answer(body: params.get("body"),
 							      date: new Date(),
 								  question: questionToAnswer,
-								  author: questionToAnswer.author)
+								  author: session.user)
 		
 		if (a.validate()) {
 			a.save()

@@ -65,10 +65,6 @@
 				margin: 0.25em 0;
 			}
 			
-			#loginHeader {
-				  float: right;
-				  color: #fff;
-				}
 
 			@media screen and (max-width: 480px) {
 				#status {
@@ -86,9 +82,7 @@
 				
 			}
 		</style>
-		  <div id="loginHeader">
-		    <g:loginControl />
-		  </div>
+		 
 		
 	</head>
 	<body>
