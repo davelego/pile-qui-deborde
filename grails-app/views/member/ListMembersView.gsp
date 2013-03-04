@@ -21,7 +21,8 @@
 				Website          : ${m.website}         <br/>
 				Avatar           : ${m.photoPath}       <br/>
 				Birth date       : ${m.dateNaissance}   <br/>
-				Inscription date : ${m.dateInscription} <br/><br/>
+				Inscription date : ${m.dateInscription} <br/>
+				Role			 : ${m.role}			<br/><br/>
 			</div>
 		</g:each>
 		

@@ -18,7 +18,7 @@
 				<div class="questionBody">${q.body}</div>
 				by : ${q.author.pseudo} 												<br/>	
 				<br/>
-				<g:if test="${session.user.id == q.author.id }">
+				<g:if test="${session.user.id == q.author.id  || session.user.role == "admin"}">
 					<g:link controller="question" action="edit" params="${[idquestion: q.id]}">
 						<input value="Edit"/>
 					</g:link>

@@ -66,7 +66,7 @@
 						<label for="avatar">Avatar</label>
 						<g:textField type="text" name="avatar" size="30" value="${member?.photoPath}" />
 					</p>	
-					
+										
 					<p class="submit">
 						<g:actionSubmit value="Submit" action="saveNewMember"/>
 					</p>	
