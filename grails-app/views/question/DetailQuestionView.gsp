@@ -26,8 +26,9 @@
 				<g:link controller="answer" action="answer" params="${[idquestion: q.id]}">
 					<input value="Answer"/>
 				</g:link>
-				
-				
+				<g:link controller="comment" action="commentQuestion" params="${[idquestion: q.id]}">
+					<input value="Comment" />
+				</g:link>
 				
 				<div>
 					<h2>Answers</h2> <br/>
@@ -38,9 +39,5 @@
 				</div>
 
 			</div>
-			
-		
-	
 	</body>
-	
 </html>

@@ -10,8 +10,8 @@
 	
 		<a href="${createLink(uri: '/', absolute: true)}"><- Return to main page</a><br/><br/>
 		
-		<g:renderErrors bean="${answer}" />
-			<g:form name="formnewanswer" params="${[idquestion: question.id]}">	
+		<g:renderErrors bean="${comment}" />
+			<g:form name="formnewcomment" params="${[idquestion: question.id]}">	
 				<fieldset>
 					<legend>Answer to :</legend>
 					
@@ -30,11 +30,11 @@
 						<g:textArea name="qbody" cols="50" rows="10" value="${question.body}" readonly="readonly" />
 					</p>
 				
-					<legend>Please type your answer :</legend>
+					<legend>Please type your comment :</legend>
 					
-					<p  class='${hasErrors(bean:answer,field:'body','errors')}'>					
+					<p class='${hasErrors(bean:comment,field:'body','errors')}'>					
 						<label for="body">Body</label>
-						<g:textArea name="body" cols="50" rows="10" value="${answer?.body}" />				
+						<g:textArea name="body" cols="50" rows="10" value="${comment?.body}" />				
 					</p>
 					
 					<p class="submit">
@@ -43,6 +43,6 @@
 					
 				</fieldset>								
 			</g:form>
-	
-	</body>
+		
+		</body>
 </html>

@@ -1,6 +1,6 @@
 package pile.qui.deborde
 
-class Question {
+class Question extends Post {
 	
 	String title
 	String body

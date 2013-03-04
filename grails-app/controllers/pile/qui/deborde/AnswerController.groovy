@@ -47,7 +47,6 @@ class AnswerController {
 		else {
 			render(view: "NewAnswerView", model:[question: questionToAnswer, answer: a])
 		}
-		
 	}
 	
 //	static scaffold = true

@@ -2,7 +2,7 @@ package pile.qui.deborde
 
 import java.util.Date;
 
-class Answer {
+class Answer extends Post {
 	
 	String body
 	Date date
