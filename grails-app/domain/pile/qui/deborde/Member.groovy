@@ -10,8 +10,10 @@ class Member {
 	String bio
 	String website
 	String photoPath;
+	String role = "author"
 	Date dateNaissance;
 	Date dateInscription;
+	
 	
 	static hasMany =  [givenAnswers:Answer, questions:Question]
 	
@@ -23,5 +25,6 @@ class Member {
 		email(blank:false, unique:true, email:true)
 		website(url:true)
 		dateNaissance(blank:false, max: new Date())
+		role(inList:["author", "admin"])
     }
 }
