@@ -111,6 +111,7 @@
 			<!--  Nouvelle div presentant les actions possibles -->
 			<div id ="page-body" role="main">
 				<g:link controller="member">Login</g:link>
+				<g:link controller="member" action="myAccount">my account</g:link>
 				<g:link controller="member" action="register">Register</g:link>
 				<g:link controller="member" action="list">List all the members</g:link>
 				<g:link controller="question">Post a new question</g:link>

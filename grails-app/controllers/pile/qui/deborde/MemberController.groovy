@@ -70,4 +70,34 @@ class MemberController {
 			render(view: "NewMemberView", model:[member: m])
 		}
 	}
+	
+	/* Displays the information of the logged user */
+	def myAccount () {
+		def currentMember = Member.get(session.user.id)
+		render(view: "MyAccountMemberView", model:[member: currentMember,edit:false])
+	}
+	
+	/* Edits the information of the logged user */
+	def edit () {
+		def currentMember = Member.get(session.user.id)
+		render(view: "MyAccountMemberView", model:[member: currentMember,edit:true])
+	}
+	
+	def updateProfile () {
+		def memberEdited 				= Member.get(params.memberToEdit)
+		memberEdited.firstName 			= params.get("firstname")
+		memberEdited.lastName 			= params.get("lastname") 
+		memberEdited.pseudo 			= params.get("pseudo")
+		memberEdited.password 			= params.get("password")
+		memberEdited.email				= params.get("email")
+		memberEdited.bio 				= params.get("bio")
+		memberEdited.website 			= params.get("website")
+		memberEdited.photoPath 			= params.get("avatar") 
+		memberEdited.dateNaissance 		= params.get("birthdate")
+		memberEdited.dateInscription 	= new Date()
+		memberEdited.save()
+		redirect(action: "myAccount")
+	}
+	
+	
 }
