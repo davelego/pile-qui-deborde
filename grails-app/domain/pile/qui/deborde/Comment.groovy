@@ -7,7 +7,7 @@ class Comment {
 	String body
 	Date date
 
-	static belongsTo = [author:Member]
+	static belongsTo = [relatedPost:Post, author:Member]
 	
 	static constraints = {
 		body(blank:false)

@@ -17,5 +17,4 @@ class Answer extends Post {
 		body(blank:false, minSize: 20)
 		date(blank:false)
 	}
-	
 }
