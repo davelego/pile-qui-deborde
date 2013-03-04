@@ -12,7 +12,7 @@
 		
 			<g:form name="formupdatemember" params="${[memberToEdit:member.id]}">	
 				<fieldset>
-					<legend>New member, please fill the following form :</legend>
+					<legend>Profile details</legend>
 					
 					<p class='${hasErrors(bean:member,field:'firstName','errors')}' >					
 						<label for="firstname">First name : </label>
@@ -116,7 +116,6 @@
 							<g:actionSubmit value="Edit profile" action="edit"/>
 						</p>
 					</g:else>
-					
 				</fieldset>								
 			</g:form>
 		
