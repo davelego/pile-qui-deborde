@@ -46,7 +46,7 @@ class MemberController {
 		
 		
 		
-		String fileNameToCreate = "./grails-app/views/uploads/" + request.getFile("payload").getOriginalFilename();
+		/*String fileNameToCreate = "./grails-app/views/uploads/" + request.getFile("payload").getOriginalFilename();
 		System.out.println(fileNameToCreate)
 		try {
 		
@@ -55,7 +55,7 @@ class MemberController {
 		
 		} catch (Throwable e) {
 		e.printStackTrace();
-		}
+		}*/
 		
 		def Member m = new Member(firstName: params.get("firstname"), 
 								  lastName: params.get("lastname"), 
