@@ -118,8 +118,20 @@
 					</g:else>
 				</fieldset>								
 			</g:form>
-		
-		
+			<div id="memberComments">
+				<h4>Answers</h4>
+				<hr/>
+				<g:each var="a" in="${member.givenAnswers}">
+						<g:link action="detail" controller="Question" params="${a.question}" id="${a.question.id}">${a.question.title}</g:link> <br/>
+				</g:each> <br/>
+			</div>
+			<div id="memberQuestions">
+				<h5>Questions</h5>
+				<hr/>
+				<g:each var="q" in="${member.questions}">
+						<g:link action="detail" controller="Question" params="${q}" id="${q.id}">${q.title}</g:link> <br/>
+				</g:each> <br/>
+			</div>
 	</body>
 	
 </html>

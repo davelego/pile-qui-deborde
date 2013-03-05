@@ -643,3 +643,29 @@ a.skip {
 .content {
 	margin-left:15px;
 }
+
+#memberComments {
+	float:left;
+	width:45%;
+	margin-right:10px;
+}
+
+#memberComments {
+	float:left;
+	width:45%;
+	margin-right:10px;
+}
+
+.questionComments {
+	font-size:12px;
+	margin-left:25%;
+	margin-right:25%;
+	margin-top:15px;
+	border-style:dashed;
+	width:auto;
+	border-width: 1px;	
+}
+
+.commentDetail {
+	margin:10px;
+}
