@@ -13,7 +13,7 @@
 			<a href="${createLink(uri: '/', absolute: true)}"><- Return to main page</a><br/><br/>
 		
 			<g:renderErrors bean="${member}" />
-			<g:form name="formnewmember" >	
+			<g:form name="formnewmember" method="post" enctype="multipart/form-data" >	
 				<fieldset>
 					<legend>New member, please fill the following form :</legend>
 					
@@ -64,6 +64,7 @@
 					
 					<p class='${hasErrors(bean:member,field:'avatar','errors')}'>
 						<label for="avatar">Avatar</label>
+						<input size="75" type="file" id="payload" name="payload" accept="image/*"/>
 						<g:textField type="text" name="avatar" size="30" value="${member?.photoPath}" />
 					</p>	
 										

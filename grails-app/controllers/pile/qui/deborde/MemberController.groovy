@@ -1,5 +1,7 @@
 package pile.qui.deborde
 import org.springframework.web.context.request.RequestContextHolder
+import org.springframework.web.multipart.MultipartFile
+import org.springframework.web.multipart.MultipartHttpServletRequest
 
 class MemberController {
 
@@ -39,6 +41,21 @@ class MemberController {
 	}
 	 
 	def saveNewMember () {
+		
+		
+		
+		
+		
+		String fileNameToCreate = "./grails-app/views/uploads/" + request.getFile("payload").getOriginalFilename();
+		System.out.println(fileNameToCreate)
+		try {
+		
+		File file = new File(fileNameToCreate);
+		request.getFile("payload").transferTo(file)
+		
+		} catch (Throwable e) {
+		e.printStackTrace();
+		}
 		
 		def Member m = new Member(firstName: params.get("firstname"), 
 								  lastName: params.get("lastname"), 
