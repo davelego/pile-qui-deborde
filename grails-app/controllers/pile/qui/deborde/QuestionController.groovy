@@ -29,6 +29,7 @@ class QuestionController {
 	}
 	
 	def detail() {
+        print "id = " + params.id
 		render(view: "DetailQuestionView", model:[q:Question.get(params.id)])
 	}
 	
@@ -77,7 +78,7 @@ class QuestionController {
 	}
 	
 	/* Call from the edit page, when the user validate the changes. This  */
-	/* method actualy apply the modifications of the question in database */
+	/* method actually apply the modifications of the question in database */
 	def editQuestion () {
 		def questionEdited = Question.get(params.idquestion)
 		questionEdited.body = params.get("body")

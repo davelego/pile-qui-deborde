@@ -41,6 +41,12 @@
 					     ${a.body} 				<br/>
 					by : ${a.author.pseudo} 	<br/>
 					
+					<g:if test="${session.user.id == a.author.id  || session.user.role == "admin"}">
+						<g:link controller="answer" action="edit" params="${[idanswer: a.id]}">
+							<input value="Edit"/>
+						</g:link>
+					</g:if>
+					
 					<g:link controller="comment" action="comment" params="${[idpost: a.id]}">
 						<input value="Comment" />
 					</g:link><br/><br/>

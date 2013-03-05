@@ -13,6 +13,7 @@ class AnswerController {
 	
 	/* List all the answers about a given question */
 	def list () {
+        print "params.idquestion = " + params.idquestion
 		def q = Question.get(params.idquestion)
 		def listAnswers = q.answers
 		
@@ -48,7 +49,29 @@ class AnswerController {
 			render(view: "NewAnswerView", model:[question: questionToAnswer, answer: a])
 		}
 	}
+    
+    /**
+     * Allow the author of the question, or the admin, to edit an answer already posted
+     * @return
+     */
+    def edit() {
+        
+        def answerToEdit = Answer.get(params.idanswer)
+        render(view: "EditAnswerView", model:[answer: answerToEdit])
+    }
 	
+    /**
+     * Persist the modification of the answer
+     * @return
+     */
+    def editAnswer () {
+        
+        def answerEdited = Answer.get(params.idanswer)
+        answerEdited.body = params.get("body")
+        answerEdited.save()
+        redirect(action: "list", controller:"question")
+    }
+    
 //	static scaffold = true
 
 //    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
