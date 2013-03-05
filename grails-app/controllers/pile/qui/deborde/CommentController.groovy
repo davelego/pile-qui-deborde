@@ -42,6 +42,26 @@ class CommentController {
         else {
             render(view: "NewCommentView", model:[question: postToComment, comment: c])
         }
+    }
+    
+    /**
+     * Called when the author or the admin want to edit an existing comment
+     * @return
+     */
+    def edit () {
         
+        def commentToEdit = Comment.get(params.idcomment)
+        render(view: "EditCommentView", model:[comment: commentToEdit])
+    }
+    
+    /**
+     * Persist the edition of the comment in the database
+     * @return
+     */
+    def editComment () {
+        def commentToEdit = Comment.get(params.idcomment)
+        commentToEdit.body = params.get("body")
+        commentToEdit.save()
+        redirect(action: "list", controller:"question")
     }
 }

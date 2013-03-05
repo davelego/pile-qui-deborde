@@ -14,8 +14,7 @@ class Member {
 	Date dateNaissance;
 	Date dateInscription;
 	
-	
-	static hasMany =  [givenAnswers:Answer, questions:Question]
+	static hasMany =  [givenAnswers:Answer, questions:Question, comments:Comment]
 	
     static constraints = {
 		firstName(blank:false)

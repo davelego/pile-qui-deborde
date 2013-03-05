@@ -29,7 +29,6 @@ class QuestionController {
 	}
 	
 	def detail() {
-        print "id = " + params.id
 		render(view: "DetailQuestionView", model:[q:Question.get(params.id)])
 	}
 	

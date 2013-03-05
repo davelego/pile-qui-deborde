@@ -17,7 +17,7 @@
 					<legend>Edit your answer :</legend>
 					
 					<p class='${hasErrors(bean:question,field:'body','errors')}'>
-						<label for="body">Question</label>
+						<label for="body">Answer</label>
 						<g:textArea name="body" cols="50" rows="10" value="${answer.body}" />
 					</p>
 					
