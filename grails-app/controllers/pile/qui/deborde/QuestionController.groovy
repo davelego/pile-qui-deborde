@@ -59,10 +59,15 @@ class QuestionController {
   
 		  if (q.validate()) {
 			  q.save()
+			  
+			  /* Reputation reward for the author */
+			  Member currentMember = Member.get(session.user.id)
+			  currentMember.reputation += 10
+			  currentMember.save()
+			  
 			  redirect(action: "list")
 		  }
 		  else {
-			//q.errors.rejectValue('author', 'You must be logged in order to post a question')
 			q.errors.rejectValue('tags','one of your tags is wrong')
 			render(view: "NewQuestionView", model:[question: q])
 		  }

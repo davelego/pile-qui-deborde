@@ -43,6 +43,9 @@ class AnswerController {
 		
 		if (a.validate()) {
 			a.save()
+			Member currentMember = Member.get(session.user.id)
+			currentMember.reputation += 5
+			currentMember.save()
 			redirect(controller:"question", action: "detail", params: [id: questionToAnswer.id])
 		}
 		else {

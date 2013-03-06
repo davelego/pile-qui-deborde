@@ -9,10 +9,12 @@ class Member {
 	String password
 	String bio
 	String website
-	String photoPath;
+	String photoPath
 	String role = "author"
-	Date dateNaissance;
-	Date dateInscription;
+	Date dateNaissance
+	Date dateInscription
+	
+	int reputation = 0
 
 	static hasMany = [givenAnswers:Answer, questions:Question, comments:Comment, votes:Vote]
 	
