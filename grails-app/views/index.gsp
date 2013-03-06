@@ -110,24 +110,24 @@
 		
 			<!--  Nouvelle div presentant les actions possibles -->
 			<div id ="page-body" role="main">
-				<g:link controller="member">Login</g:link>
-				<g:link controller="member" action="myAccount">my account</g:link>
-				<g:link controller="member" action="register">Register</g:link>
-				<g:link controller="member" action="list">List all the members</g:link>
-				<g:link controller="question">Post a new question</g:link>
-				<g:link controller="question" action="list">List all the questions</g:link>
-				<g:link controller="tag">Add a new tag</g:link>
-				<g:link controller="tag" action="list">List all the tags</g:link>
+				<g:link controller="member">Login</g:link><br/>
+				<g:link controller="member" action="myAccount">my account</g:link><br/>
+				<g:link controller="member" action="register">Register</g:link><br/>
+				<g:link controller="member" action="list">List all the members</g:link><br/>
+				<g:link controller="question">Post a new question</g:link><br/>
+				<g:link controller="question" action="list">List all the questions</g:link><br/>
+				<g:link controller="tag">Add a new tag</g:link><br/>
+				<g:link controller="tag" action="list">List all the tags</g:link><br/>
 			</div>
 
-			<div id="controller-list" role="navigation" style="padding:1em;">
+			<!--<div id="controller-list" role="navigation" style="padding:1em;">
 				<h2>Available Controllers:</h2>
 				<ul>
 					<g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
 						<li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
 					</g:each>
 				</ul>
-			</div>
+			</div>-->
 		
 	</body>
 </html>

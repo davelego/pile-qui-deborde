@@ -4,12 +4,10 @@ class Question extends Post {
 	
 	String title
 	String body
-	int notationUp = 0
-	int notationDown = 0 
+	int totalVote = 0
 	Date date
 	
-	static hasMany = [answers:Answer, comments:Comment, tags:Tag]
-	static belongsTo = [author:Member]
+	static hasMany = [answers:Answer, tags:Tag]
 	
     static constraints = {
 		title(blank:false, size: 10..280)

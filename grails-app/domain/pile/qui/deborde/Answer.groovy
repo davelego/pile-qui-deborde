@@ -11,7 +11,7 @@ class Answer extends Post {
 	int notationDown = 0
 	boolean topansewer = false;
 	
-	static belongsTo = [question:Question, author:Member]
+	static belongsTo = [question:Question]
 	
 	static constraints = {
 		body(blank:false, minSize: 20)

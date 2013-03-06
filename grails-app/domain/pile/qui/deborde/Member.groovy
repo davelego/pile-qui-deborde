@@ -13,8 +13,8 @@ class Member {
 	String role = "author"
 	Date dateNaissance;
 	Date dateInscription;
-	
-	static hasMany =  [givenAnswers:Answer, questions:Question, comments:Comment]
+
+	static hasMany = [givenAnswers:Answer, questions:Question, comments:Comment, votes:Vote]
 	
     static constraints = {
 		firstName(blank:false)

@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="layout" content="main" />
-<title>List of all the questions</title>
+	<meta name="layout" content="main" />
+	<g:javascript library="jquery" plugin="jquery"/>
+	<!--<g:setProvider library="jquery"/>-->
+	<title>List of all the questions</title>
 </head>
 
 <body>
@@ -16,25 +18,42 @@
 
 		<!-- Question -->
 		<div class="question">
-			<h2>Question</h2>
-			<br /> Title :
-			<g:link action="detail" id="${q.id}">
-				${q.title}
-			</g:link>
-			<br /> <br /> Tags :
-			<g:each var="t" in="${q.tags}">
-				<span class="tag">
-					${t.word}
-				</span>
-			</g:each>
-			<br />
-	
-			<div class="questionBody">
-				${q.body}
+			<h2>Question</h2><br/>
+			
+			<div style="float: left; width: 10%; margin-top:5%">
+				<g:remoteLink controller="question" action="voteUp" update="totalVote" params="${[idquestion: q.id]}">
+					<img src="${resource(dir: 'images', file: 'arrow_up.png')}"/><br/>
+				</g:remoteLink>
+				
+				<!--<g:textField name="totalVote" type="text" size="1" value="0" readonly="readonly"/><br/>-->
+				<div id="totalVote" style="margin-left: 10%">${q.totalVote}</div>
+				
+				<g:remoteLink controller="question" action="voteDown" update="totalVote" params="${[idquestion: q.id]}">
+					<img src="${resource(dir: 'images', file: 'arrow_down.png')}"/><br/>
+				</g:remoteLink>
 			</div>
-			by :
-			${q.author.pseudo}
-			<br /> <br />
+			
+			<div style="float: right; width: 90%">
+				Title :
+				<g:link action="detail" id="${q.id}">
+					${q.title}
+				</g:link>
+				<br /> <br /> Tags :
+				<g:each var="t" in="${q.tags}">
+					<span class="tag">
+						${t.word}
+					</span>
+				</g:each>
+				<br />
+		
+				<div class="questionBody">
+					${q.body}
+				</div>
+				by :
+				${q.author.pseudo}
+				<br/><br/>
+			</div>
+			
 			<g:if
 				test="${session.user.id == q.author.id  || session.user.role == "admin"}">
 				<g:link controller="question" action="edit"
