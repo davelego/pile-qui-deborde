@@ -7,8 +7,6 @@ class Answer extends Post {
 	String body
 	Date date
 
-	int notationUp = 0
-	int notationDown = 0
 	boolean topansewer = false;
 	
 	static belongsTo = [question:Question]

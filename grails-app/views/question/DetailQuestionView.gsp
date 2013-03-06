@@ -21,14 +21,13 @@
 			<h2>Question</h2><br/>
 			
 			<div style="float: left; width: 10%; margin-top:5%">
-				<g:remoteLink controller="question" action="voteUp" update="totalVote" params="${[idquestion: q.id]}">
+				<g:remoteLink controller="post" action="voteUp" update="totalVote" params="${[idpost: q.id]}">
 					<img src="${resource(dir: 'images', file: 'arrow_up.png')}"/><br/>
 				</g:remoteLink>
 				
-				<!--<g:textField name="totalVote" type="text" size="1" value="0" readonly="readonly"/><br/>-->
 				<div id="totalVote" style="margin-left: 10%">${q.totalVote}</div>
 				
-				<g:remoteLink controller="question" action="voteDown" update="totalVote" params="${[idquestion: q.id]}">
+				<g:remoteLink controller="post" action="voteDown" update="totalVote" params="${[idpost: q.id]}">
 					<img src="${resource(dir: 'images', file: 'arrow_down.png')}"/><br/>
 				</g:remoteLink>
 			</div>
@@ -100,14 +99,26 @@
 		
 		<!-- Answers in relation with the previous question -->
 		<div class="questionAnswers">
-			<h2>Answers</h2>
-			<br />
-	
+			<h2>Answers</h2><br/>
+				
 			<g:each var="a" in="${q.answers}">
-				${a.body}
-				<br />
-							by : ${a.author.pseudo}
-				<br />
+			
+				<div style="float: left; width: 10%;">
+					<g:remoteLink controller="post" action="voteUp" update="totalVoteAnswer" params="${[idpost: a.id]}">
+						<img src="${resource(dir: 'images', file: 'arrow_up.png')}"/><br/>
+					</g:remoteLink>
+					
+					<div id="totalVoteAnswer" style="margin-left: 10%">${a.totalVote}</div>
+					
+					<g:remoteLink controller="post" action="voteDown" update="totalVoteAnswer" params="${[idpost: a.id]}">
+						<img src="${resource(dir: 'images', file: 'arrow_down.png')}"/><br/>
+					</g:remoteLink>
+				</div>
+			
+				<div style="float: right; width: 90%;">
+					${a.body} <br/>
+					by : ${a.author.pseudo} <br/>
+				</div>
 	
 				<!-- Edit button for the author or the admin -->
 				<g:if

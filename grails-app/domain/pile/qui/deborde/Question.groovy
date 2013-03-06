@@ -4,7 +4,6 @@ class Question extends Post {
 	
 	String title
 	String body
-	int totalVote = 0
 	Date date
 	
 	static hasMany = [answers:Answer, tags:Tag]
