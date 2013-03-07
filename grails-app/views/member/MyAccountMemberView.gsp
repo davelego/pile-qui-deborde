@@ -105,7 +105,12 @@
 						<g:else>
 							<label>${member?.photoPath}</label>
 						</g:else>	
-					</p>	
+					</p>
+					
+					<g:if test="${!edit}">
+						<label>Reputation ${member?.reputation}</label>
+					</g:if>
+					
 					<g:if test="${edit}">					
 						<p class="submit">
 							<g:actionSubmit value="Save changes" action="updateProfile"/>

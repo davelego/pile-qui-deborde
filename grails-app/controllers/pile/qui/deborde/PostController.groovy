@@ -20,12 +20,18 @@ class PostController {
 		
 		/* If the member haven't already voted */
 		if (!haveAlreadyVoted) {
+			/* Add one vote to the post */
 			postVoted.totalVote ++
 			postVoted.save()
+			/* Add a vote in database in order to memorize the relation voter - post */
 			def Vote v = new Vote (votedPost:postVoted, voter: memberWhoVotes)
 			if (v.validate()) {
 				v.save()
 			}
+			/* Add a reputation point to the author of the original post */
+			Member author = Member.get(postVoted.author.id)
+			author.reputation ++
+			author.save()
 		}
 			
 		render postVoted.totalVote

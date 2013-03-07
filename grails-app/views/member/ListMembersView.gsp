@@ -22,6 +22,7 @@
 				Avatar           : ${m.photoPath}       <br/>
 				Birth date       : ${m.dateNaissance}   <br/>
 				Inscription date : ${m.dateInscription} <br/>
+				Reputation       : ${m.reputation}      <br/>
 				Role			 : ${m.role}			<br/><br/>
 			</div>
 		</g:each>

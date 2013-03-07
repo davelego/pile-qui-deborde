@@ -104,13 +104,13 @@
 			<g:each var="a" in="${q.answers}">
 			
 				<div style="float: left; width: 10%;">
-					<g:remoteLink controller="post" action="voteUp" update="totalVoteAnswer" params="${[idpost: a.id]}">
+					<g:remoteLink controller="post" action="voteUp" update="totalVoteAnswer${a.id}" params="${[idpost: a.id]}">
 						<img src="${resource(dir: 'images', file: 'arrow_up.png')}"/><br/>
 					</g:remoteLink>
 					
-					<div id="totalVoteAnswer" style="margin-left: 10%">${a.totalVote}</div>
+					<div id="totalVoteAnswer${a.id}" style="margin-left: 10%">${a.totalVote}</div>
 					
-					<g:remoteLink controller="post" action="voteDown" update="totalVoteAnswer" params="${[idpost: a.id]}">
+					<g:remoteLink controller="post" action="voteDown" update="totalVoteAnswer${a.id}" params="${[idpost: a.id]}">
 						<img src="${resource(dir: 'images', file: 'arrow_down.png')}"/><br/>
 					</g:remoteLink>
 				</div>
