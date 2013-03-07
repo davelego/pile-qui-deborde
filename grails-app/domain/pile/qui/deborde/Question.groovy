@@ -14,4 +14,8 @@ class Question extends Post {
 		date(blank:false)
 		tags(nullable: false, minSize: 1, maxSize: 5)
     }
+	
+	static mapping = {
+		body type: 'text'
+	  }
 }

@@ -23,8 +23,15 @@
 				Birth date       : ${m.dateNaissance}   <br/>
 				Inscription date : ${m.dateInscription} <br/>
 				Reputation       : ${m.reputation}      <br/>
-				Role			 : ${m.role}			<br/><br/>
-			</div>
+				Role			 : ${m.role}			<br/>
+				Badges           :
+				<g:if test="${m.badges}"> 
+					<g:each var="b" in="${m.badges}">${b.name} </g:each>
+				</g:if>
+				<g:else>
+					none
+				</g:else>
+			</div><br/>
 		</g:each>
 		
 	</body>

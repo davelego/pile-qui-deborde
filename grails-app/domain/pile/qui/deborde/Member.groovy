@@ -16,7 +16,7 @@ class Member {
 	
 	int reputation = 0
 
-	static hasMany = [givenAnswers:Answer, questions:Question, comments:Comment, votes:Vote]
+	static hasMany = [givenAnswers:Answer, questions:Question, comments:Comment, votes:Vote, badges:Badge]
 	
     static constraints = {
 		firstName(blank:false)

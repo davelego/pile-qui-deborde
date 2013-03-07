@@ -2,6 +2,8 @@ package pile.qui.deborde
 
 class PostController {
 
+	def memberService
+	
 	/**
 	 * Called when a user add a positive vote for a post
 	 * @return
@@ -31,6 +33,7 @@ class PostController {
 			/* Add a reputation point to the author of the original post */
 			Member author = Member.get(postVoted.author.id)
 			author.reputation ++
+			memberService.checkReputation(author)
 			author.save()
 		}
 			

@@ -1,7 +1,5 @@
 package pile.qui.deborde
 
-
-
 import org.junit.*
 import grails.test.mixin.*
 

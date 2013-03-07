@@ -6,6 +6,7 @@ import org.springframework.web.context.request.RequestContextHolder
 class QuestionController {
 
 	def questionService
+	def memberService
 
 	/* Main method of the controller */
     def index () {
@@ -63,6 +64,10 @@ class QuestionController {
 			  /* Reputation reward for the author */
 			  Member currentMember = Member.get(session.user.id)
 			  currentMember.reputation += 10
+			  memberService.checkReputation(currentMember)
+			  for (Tag t : q.tags) {
+				  memberService.checkTags(currentMember, t.word)
+			  }
 			  currentMember.save()
 			  
 			  redirect(action: "list")

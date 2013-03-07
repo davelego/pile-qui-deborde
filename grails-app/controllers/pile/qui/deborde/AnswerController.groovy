@@ -3,6 +3,8 @@ package pile.qui.deborde
 import org.springframework.dao.DataIntegrityViolationException
 
 class AnswerController {
+	
+	def memberService
 
 	/* Call from the list of the questions and redirect the user on a page */
 	/* where he can answer to the selected question                        */
@@ -45,6 +47,7 @@ class AnswerController {
 			a.save()
 			Member currentMember = Member.get(session.user.id)
 			currentMember.reputation += 5
+			memberService.checkReputation(currentMember)
 			currentMember.save()
 			redirect(controller:"question", action: "detail", params: [id: questionToAnswer.id])
 		}

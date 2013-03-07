@@ -45,7 +45,7 @@
 					</p>
 					
 					<p class='${hasErrors(bean:member,field:'pseudo','errors')}'>
-						<label for="pseudo">Pseudo</label>
+						<label for="pseudo">Pseudo : </label>
 						<g:if test="${edit}">	
 							<g:textField type="text" name="pseudo" size="30" value="${member?.pseudo}" />
 						</g:if>
@@ -56,19 +56,19 @@
 					
 					<g:if test="${edit}">	
 						<p class='${hasErrors(bean:member,field:'password','errors')}'>
-							<label for="password">Password</label>
+							<label for="password">Password : </label>
 							<g:passwordField type="password" name="password" size="30" />
 						</p>
 					
 						
 						<p class='${hasErrors(bean:member,field:'password','errors')}'>
-							<label for="repassword">Reconfirm</label>
+							<label for="repassword">Reconfirm : </label>
 							<g:passwordField type="repassword" name="repassword" size="30" />
 						</p>
 					</g:if>
 					
 					<p class='${hasErrors(bean:member,field:'birthdate','errors')}'>
-						<label for="birthdate">Birth date</label>
+						<label for="birthdate">Birth date : </label>
 						<g:if test="${edit}">	
 							<g:datePicker name="birthdate" precision="day" value="${member?.dateNaissance}" />
 						</g:if>
@@ -78,7 +78,7 @@
 					</p>
 					
 					<p class='${hasErrors(bean:member,field:'bio','errors')}'>
-						<label for="bio">Bio</label>
+						<label for="bio">Bio : </label>
 						<g:if test="${edit}">	
 							<g:textArea name="bio" cols="30" rows="10" value="${member?.bio}" />
 						</g:if>
@@ -88,7 +88,7 @@
 					</p>
 						
 					<p class='${hasErrors(bean:member,field:'website','errors')}'>
-						<label for="website">Web site</label>		
+						<label for="website">Website : </label>		
 						<g:if test="${edit}">			
 							<g:textField type="text" name="website" size="30" value="${member?.website}" />
 						</g:if>
@@ -98,7 +98,7 @@
 					</p>
 					
 					<p class='${hasErrors(bean:member,field:'avatar','errors')}'>
-						<label for="avatar">Avatar</label>
+						<label for="avatar">Avatar : </label>
 						<g:if test="${edit}">	
 							<g:textField type="text" name="avatar" size="30" value="${member?.photoPath}" />
 						</g:if>
@@ -108,7 +108,18 @@
 					</p>
 					
 					<g:if test="${!edit}">
-						<label>Reputation ${member?.reputation}</label>
+						<label>Reputation : ${member?.reputation}</label><br/>
+					</g:if>
+					
+					<g:if test="${!edit}">
+						<label>Badges : 
+							<g:if test="${member?.badges}"> 
+								<g:each var="b" in="${member?.badges}">${b.name} </g:each>
+							</g:if>
+							<g:else>
+								none
+							</g:else>
+						</label>
 					</g:if>
 					
 					<g:if test="${edit}">					
