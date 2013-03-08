@@ -30,7 +30,9 @@ class QuestionController {
 	}
 	
 	def detail() {
-		render(view: "DetailQuestionView", model:[q:Question.get(params.id)])
+		def questionToDetail = Question.get(params.id)
+		def listAnswers = Answer.findAllByQuestion(questionToDetail, [sort:'totalVote', order:'desc'])
+		render(view: "DetailQuestionView", model:[q:questionToDetail, answers:listAnswers])
 	}
 	
 	/* Save in database a new question posted by a member */

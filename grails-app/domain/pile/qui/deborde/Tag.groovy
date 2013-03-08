@@ -10,4 +10,8 @@ class Tag {
 		word(blank:false)
 		description(blank:false)
     }
+	
+	static mapping = {
+		description type: 'text'
+	}
 }

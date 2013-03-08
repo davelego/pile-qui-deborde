@@ -112,7 +112,8 @@
 					<div class="questionList">
 						Title  : <g:link controller="question" action="detail" id="${q.id}">${q.title}</g:link><br/>
 						<div class="questionAuthor"> by : ${q.author.pseudo} </div>	
-						<div class="questionTag"> Tags   :  <g:each var="t" in="${q.tags}"> <span class="tag"> ${t.word} </span></g:each></div><br/>
+						<div class="questionTag"> Tags   :  <g:each var="t" in="${q.tags}"> <span class="tag"> ${t.word} </span></g:each></div>
+						<div style="font-size: 0.7em;">posted the ${q.date}</div><br/>
 					</div> 
 				</g:each>
 			

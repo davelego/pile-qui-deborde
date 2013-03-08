@@ -7,6 +7,6 @@ class IndexController {
 	 * @return
 	 */
     def index() { 
-		render(view:"index", model:[questions:Question.getAll()])
+		render(view:"index", model:[questions:Question.list()])
 	}
 }

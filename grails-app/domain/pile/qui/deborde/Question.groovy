@@ -4,7 +4,6 @@ class Question extends Post {
 	
 	String title
 	String body
-	Date date
 	
 	static hasMany = [answers:Answer, tags:Tag]
 	
@@ -17,5 +16,7 @@ class Question extends Post {
 	
 	static mapping = {
 		body type: 'text'
+		sort date: "desc"
+	    answers sort:'totalVote', order:'asc' 
 	  }
 }

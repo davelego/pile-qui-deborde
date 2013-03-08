@@ -28,4 +28,8 @@ class Member {
 		dateNaissance(blank:false, max: new Date())
 		role(inList:["author", "admin"])
     }
+	
+	static mapping = {
+		bio type: 'text'
+	}
 }

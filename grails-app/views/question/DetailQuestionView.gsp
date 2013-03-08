@@ -50,7 +50,10 @@
 				</div>
 				by :
 				${q.author.pseudo}
-				<br/><br/>
+				<br/>
+				
+				<div style="font-size: 0.7em;">posted the ${q.date}</div><br/>
+				<br/>
 			</div>
 			
 			<g:if
@@ -101,7 +104,7 @@
 		<div class="questionAnswers">
 			<h2>Answers</h2><br/>
 				
-			<g:each var="a" in="${q.answers}">
+			<g:each var="a" in="${answers}">
 			
 				<div style="float: left; width: 10%;">
 					<g:remoteLink controller="post" action="voteUp" update="totalVoteAnswer${a.id}" params="${[idpost: a.id]}">
@@ -118,7 +121,11 @@
 				<div style="float: right; width: 90%;">
 					${a.body} <br/>
 					by : ${a.author.pseudo} <br/>
+					<span style="font-size: 0.7em;">
+						posted the ${a.date}
+					</span>
 				</div>
+				
 	
 				<!-- Edit button for the author or the admin -->
 				<g:if

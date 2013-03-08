@@ -14,4 +14,7 @@ class Comment {
 		date(blank:false)
 	}
 	
+	static mapping = {
+		body type: 'text'
+	}
 }
