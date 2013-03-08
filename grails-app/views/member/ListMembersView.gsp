@@ -19,7 +19,6 @@
 				Password         : ${m.password}        <br/>
 				Bio              : ${m.bio}             <br/>
 				Website          : ${m.website}         <br/>
-				Avatar           : ${m.photoPath}       <br/>
 				Birth date       : ${m.dateNaissance}   <br/>
 				Inscription date : ${m.dateInscription} <br/>
 				Reputation       : ${m.reputation}      <br/>

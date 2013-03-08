@@ -10,7 +10,7 @@
 		<a href="${createLink(uri: '/', absolute: true)}"><- Return to main page</a><br/><br/>
 		
 		
-			<g:form name="formupdatemember" params="${[memberToEdit:member.id]}">	
+			<g:form name="formupdatemember" params="${[memberToEdit:member.id]}" method="post" enctype="multipart/form-data">	
 				<fieldset>
 					<legend>Profile details</legend>
 					
@@ -96,16 +96,14 @@
 							<label>${member?.website}</label>
 						</g:else>									
 					</p>
-					
-					<p class='${hasErrors(bean:member,field:'avatar','errors')}'>
-						<label for="avatar">Avatar : </label>
-						<g:if test="${edit}">	
-							<g:textField type="text" name="avatar" size="30" value="${member?.photoPath}" />
-						</g:if>
-						<g:else>
-							<label>${member?.photoPath}</label>
-						</g:else>	
-					</p>
+					<g:if test="${edit}">
+						<p class='${hasErrors(bean:member,field:'avatar','errors')}'>
+							<label for="avatar">Avatar : </label>
+								
+								<input size="30" type="file" id="avatar" name="avatar" accept="image/*"/>
+							
+						</p>
+					</g:if>	
 					
 					<g:if test="${!edit}">
 						<label>Reputation : ${member?.reputation}</label><br/>
@@ -134,6 +132,9 @@
 					</g:else>
 				</fieldset>								
 			</g:form>
+			<g:if test="${member.avatar}">
+			  <img class="avatar" src="${createLink(controller:'member', action:'avatar_image', id:member.id)}" />
+			</g:if>
 			<div id="memberComments">
 				<h4>Answers</h4>
 				<hr/>

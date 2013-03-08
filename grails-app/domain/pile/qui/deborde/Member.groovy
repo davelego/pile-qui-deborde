@@ -9,7 +9,8 @@ class Member {
 	String password
 	String bio
 	String website
-	String photoPath
+	byte [] avatar
+	String avatarType
 	String role = "author"
 	Date dateNaissance
 	Date dateInscription
@@ -27,6 +28,8 @@ class Member {
 		website(url:true)
 		dateNaissance(blank:false, max: new Date())
 		role(inList:["author", "admin"])
+		avatar(nullable:true,maxSize: 16384)
+		avatarType(nullable:true)
     }
 	
 	static mapping = {

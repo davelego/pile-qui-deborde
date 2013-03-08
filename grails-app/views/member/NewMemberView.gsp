@@ -64,8 +64,7 @@
 					
 					<p class='${hasErrors(bean:member,field:'avatar','errors')}'>
 						<label for="avatar">Avatar</label>
-						<input size="75" type="file" id="payload" name="payload" accept="image/*"/>
-						<g:textField type="text" name="avatar" size="30" value="${member?.photoPath}" />
+						<input size="30" type="file" id="avatar" name="avatar" accept="image/*"/>
 					</p>	
 										
 					<p class="submit">

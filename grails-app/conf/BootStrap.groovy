@@ -18,7 +18,7 @@ class BootStrap {
 			password:"Machin",
 			bio:"Je suis Stonkeep",
 			website:"http://www.stonkeep.com",
-			photoPath:"http://www.stonkeep.com/img/avatar.png",
+			avatar:null,
 			dateNaissance:Date.parse("yyyy-MM-dd", "1990-09-21"),
 			dateInscription:new Date())
 		
@@ -36,7 +36,7 @@ class BootStrap {
 			password:"Machin",
 			bio:"Je suis Superapha",
 			website:"http://www.superapha.com",
-			photoPath:"http://www.superapha.com/img/avatar.png",
+			photoPath:null,
 			dateNaissance:Date.parse("yyyy-MM-dd", "1990-09-19"),
 			dateInscription:new Date())
 		
