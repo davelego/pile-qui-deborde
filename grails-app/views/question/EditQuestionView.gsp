@@ -3,6 +3,7 @@
 	<head>
 		<meta name="layout" content="main"/>
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'questionstyle.css')}" type="text/css">
+		<g:javascript library='jquery' />
 		<title>Edit the following question</title>
 	</head>
 	
@@ -12,7 +13,7 @@
 			<a href="${createLink(uri: '/', absolute: true)}"><- Return to main page</a><br/><br/>
 		
 			<g:renderErrors bean="${question}" />
-			<g:form name="formeditquestion" params="${[idquestion: question.id]}">	
+			<g:form name="formnewquestion" params="${[idquestion: question.id]}">	
 				<fieldset>
 					<legend>Edit your question :</legend>
 					
@@ -23,7 +24,16 @@
 					
 					<p class='${hasErrors(bean:question,field:'tags','errors')}'>					
 						<label for="tags">Tags</label>
-						<g:textField name="tags" type="text" size="30" value="${question.tags}" />					
+						<g:textField name="tags" type="text" size="30" />
+							<jq:jquery>
+								$('#tags').val('')
+							</jq:jquery>
+						<g:each var="t" in="${question.tags}">
+							<jq:jquery>
+								$('#tags').val($('#tags').val() + '${t.word} ');                                
+							</jq:jquery>
+						</g:each>
+						
 					</p>
 					
 					<p class='${hasErrors(bean:question,field:'body','errors')}'>

@@ -75,7 +75,7 @@ class AnswerController {
         def answerEdited = Answer.get(params.idanswer)
         answerEdited.body = params.get("body")
         answerEdited.save()
-        redirect(action: "list", controller:"question")
+		redirect(controller:"question", action:"detail", params: [id: answerEdited.question.id])
     }
     
 //	static scaffold = true

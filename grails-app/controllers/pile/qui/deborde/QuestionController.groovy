@@ -91,7 +91,27 @@ class QuestionController {
 	def editQuestion () {
 		def questionEdited = Question.get(params.idquestion)
 		questionEdited.body = params.get("body")
-		questionEdited.save()
-		redirect(action: "list")
+		
+		def tags = params.get("tags");
+		tags = tags.toString();
+		def  tagsArray = tags.split(" ");
+		def listTags = []
+		for (String tag : tagsArray) {
+		   if (Tag.findAllByWord(tag)) {
+				listTags.add(Tag.findAllByWord(tag)[0])
+		   } else {
+			  listTags = null;
+			  break;
+		   }
+		}
+		
+		questionEdited.tags = listTags
+		if (questionEdited.validate()) {
+			questionEdited.save()
+			redirect(action:"detail", params: [id: questionEdited.id])
+		} else {
+			questionEdited.errors.rejectValue('tags',"0ne of your tags doesn\'t exists")
+			render(view: "EditQuestionView", model:[question: questionEdited])
+		}
 	}
 }

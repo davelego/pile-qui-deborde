@@ -12,7 +12,7 @@
 			<a href="${createLink(uri: '/', absolute: true)}"><- Return to main page</a><br/><br/>
 		
 			<g:renderErrors bean="${tag}" />
-			<g:form name="formnewtag">	
+			<g:form name="formnewquestion">	
 				<fieldset>
 					<legend>Please fill the following fields :</legend>
 					

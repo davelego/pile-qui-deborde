@@ -17,11 +17,9 @@ class MemberController {
 		
 		def pseudo = params.get("pseudo")
 		def password = params.get("password")
-		log.error(pseudo + password)
 		def user = Member.findByPseudoAndPassword(pseudo,password)
 		if( user ) {
 			session.user = user
-			//render ' logged user : ' + session.user
 			redirect(uri:"/")
 		}
 		else{
@@ -32,8 +30,7 @@ class MemberController {
 	def logout = {
 		session.user = null
 		redirect(uri:"/")
-	  }
-	
+	}
 	
 	def list() {
 		 def listMembers = Member.list()
@@ -67,8 +64,6 @@ class MemberController {
 								  photoPath: params.get("avatar"), 
 								  dateNaissance: params.get("birthdate"),
 								  dateInscription: new Date());
-		
-		// def Member m = new Member(params) Ne fonctionne pas ?
 							  
 		/* Validation des informations du nouveau membre par rapport aux contraintres */  
 		if (m.validate()) {
@@ -90,8 +85,12 @@ class MemberController {
 	
 	/* Displays the information of the logged user */
 	def myAccount () {
-		def currentMember = Member.get(session.user.id)
-		render(view: "MyAccountMemberView", model:[member: currentMember,edit:false])
+		if (!session.user) {
+			redirect(controller:"member", action:"index")
+		} else {
+			def currentMember = Member.get(session.user.id)
+			render(view: "MyAccountMemberView", model:[member: currentMember,edit:false])
+		}
 	}
 	
 	/* Edits the information of the logged user */

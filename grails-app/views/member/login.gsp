@@ -11,10 +11,10 @@
 		
 			<a href="${createLink(uri: '/', absolute: true)}"><- Return to main page</a><br/><br/>
 				
-			<g:form name="formLogin">	
+			<g:form name="formnewmember">	
 				<fieldset>
 					<legend>Please login :</legend>
-										<P>
+					<P>
 						<label for="pseudo">Pseudo</label>
 						<g:textField type="text" name="pseudo" size="30" />
 					</P>
