@@ -28,7 +28,7 @@ class MemberTests {
 		 
 		 def memberTest = new Member()
 		 assertFalse memberTest.validate()
-		 assertEquals 10, memberTest.errors.errorCount
+		 assertEquals 9, memberTest.errors.errorCount
 		 assertEquals "nullable", memberTest.errors["firstName"]
 		 assertEquals "nullable", memberTest.errors["lastName"]
 		 assertEquals "nullable", memberTest.errors["email"]

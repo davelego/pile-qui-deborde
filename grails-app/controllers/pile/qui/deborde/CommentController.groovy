@@ -62,6 +62,6 @@ class CommentController {
         def commentToEdit = Comment.get(params.idcomment)
         commentToEdit.body = params.get("body")
         commentToEdit.save()
-        redirect(action: "list", controller:"question")
+        redirect(controller:"question", action: "detail", params: [id: commentToEdit.relatedPost.id])
     }
 }
