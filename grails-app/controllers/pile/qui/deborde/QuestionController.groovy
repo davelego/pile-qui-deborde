@@ -81,6 +81,12 @@ class QuestionController {
 		render(view: "EditQuestionView", model:[question: questionToEdit])
 	}
 	
+	def delete () {
+		def question = Question.get(params.idquestion)
+		question.delete()
+		redirect(action: "list")
+	}
+	
 	/* Call from the edit page, when the user validate the changes. This  */
 	/* method actually apply the modifications of the question in database */
 	def editQuestion () {

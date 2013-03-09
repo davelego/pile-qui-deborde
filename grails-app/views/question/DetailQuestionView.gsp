@@ -60,6 +60,10 @@
 						params="${[idquestion: q.id]}">
 						<g:textField value="Edit" type="text" name="editBtnQuestion" readonly="readonly"/>
 					</g:link>
+					<g:link controller="question" action="delete"
+						params="${[idquestion: q.id]}">
+						<g:textField value="Delete" type="text" name="deleteBtnQuestion" readonly="readonly"/>
+					</g:link>
 				</g:if>
 				
 				<g:link controller="answer" action="answer"

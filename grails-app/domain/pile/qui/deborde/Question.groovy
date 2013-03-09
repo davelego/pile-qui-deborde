@@ -17,6 +17,6 @@ class Question extends Post {
 	static mapping = {
 		body type: 'text'
 		sort date: "desc"
-	    answers sort:'totalVote', order:'asc' 
+	    answers sort:'totalVote', order:'asc' , cascade: 'all-delete-orphan'
 	}
 }

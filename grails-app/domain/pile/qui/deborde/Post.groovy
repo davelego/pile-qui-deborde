@@ -7,4 +7,7 @@ class Post {
 	
     static hasMany =  [comments:Comment, votes:Vote]
 	static belongsTo = [author:Member]
+	static mapping = {
+		comments cascade: 'all-delete-orphan'
+	}
 }
