@@ -123,7 +123,7 @@ class MemberController {
 		
 		if (! okcontents.contains(f.getContentType())) {
 			flash.message = "Avatar must be one of: ${okcontents}"
-			render(view: "NewMemberView", model:[member: Member.get(params.memberToEdit)])
+			render(view: "MyAccountMemberView", model:[member: Member.get(params.memberToEdit)])
 			return;
 		}
 		
@@ -138,7 +138,7 @@ class MemberController {
 			/* Verification de l'egalite des deux mots de passe */
 			if (params.get("password").equals(params.get("repassword"))) {
 				memberEdited.save()
-				redirect(action: "list")
+				redirect(action: "myAccount")
 			}
 			else {
 				memberEdited.errors.rejectValue("password", 'Both password fields must be the same')
@@ -146,10 +146,8 @@ class MemberController {
 			}
 			
 		} else {
-			render(view: "NewMemberView", model:[member: Member.get(params.memberToEdit)])
+			render(view: "MyAccountMemberView", model:[member: Member.get(params.memberToEdit)])
 		}
-		memberEdited.save()
-		redirect(action: "myAccount")
 	}
 	
 	
