@@ -53,6 +53,18 @@ class CommentController {
         def commentToEdit = Comment.get(params.idcomment)
         render(view: "EditCommentView", model:[comment: commentToEdit])
     }
+	
+	/**
+	 * deletes the comment
+	 * 
+	 * @return
+	 */
+	def delete () {
+		def com = Comment.get(params.idcomment)
+		def postid = com.relatedPost.id
+		com.delete()
+		redirect(controller:"question", action: "detail", params: [id: postid])
+	}
     
     /**
      * Persist the edition of the comment in the database

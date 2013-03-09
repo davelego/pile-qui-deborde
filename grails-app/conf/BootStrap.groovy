@@ -20,7 +20,8 @@ class BootStrap {
 			website:"http://www.stonkeep.com",
 			avatar:null,
 			dateNaissance:Date.parse("yyyy-MM-dd", "1990-09-21"),
-			dateInscription:new Date())
+			dateInscription:new Date(),
+			role:"admin")
 		
 		if (!m1.save()){
 		    log.error "Error on USER1"

@@ -68,6 +68,18 @@ class AnswerController {
         render(view: "EditAnswerView", model:[answer: answerToEdit])
     }
 	
+	/**
+	 * deletes the answer (only for admin and owner) - manages cascade
+	 * 
+	 * @return
+	 */
+	def delete () {
+		def answer = Answer.get(params.idanswer)
+		def questionid = answer.question.id
+		answer.delete()
+		redirect(controller:"question", action:"detail", params: [id: questionid])
+	}
+	
     /**
      * Call the service to persist the modification
      * @return

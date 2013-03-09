@@ -95,6 +95,10 @@
 								params="${[idcomment: c.id]}">
 								<g:textField value="Edit" type="text" name="editBtnComment" readonly="readonly"/>
 							</g:link>
+							<g:link controller="comment" action="delete"
+								params="${[idcomment: c.id]}">
+								<g:textField value="Delete" type="text" name="deleteBtnQuestion" readonly="readonly"/>
+							</g:link>
 							<br />
 						</g:if>
 					</div>
@@ -150,6 +154,10 @@
 							params="${[idanswer: a.id]}">
 							<g:textField value="Edit" type="text" name="editBtnAnswer" readonly="readonly"/>
 						</g:link>
+						<g:link controller="answer" action="delete"
+							params="${[idanswer: a.id]}">
+							<g:textField value="Delete" type="text" name="deleteBtnQuestion" readonly="readonly"/>
+						</g:link>
 					</g:if>
 		
 					<!-- Comment button for everyone -->
@@ -175,6 +183,10 @@
 									<g:link controller="comment" action="edit"
 										params="${[idcomment: com.id]}">
 										<g:textField value="Edit" type="text" name="editBtnComment" readonly="readonly"/>
+									</g:link>
+									<g:link controller="comment" action="delete"
+										params="${[idcomment: com.id]}">
+										<g:textField value="Delete" type="text" name="deleteBtnQuestion" readonly="readonly"/>
 									</g:link>
 									<br />
 								</g:if>
