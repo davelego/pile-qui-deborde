@@ -9,10 +9,7 @@
 
 <body>
 
-	<a href="${createLink(uri: '/', absolute: true)}"><- Return to main
-		page</a>
-	<br />
-	<br />
+	<a href="${createLink(uri: '/', absolute: true)}"><- Return to main page</a><br/><br/>
 
 	<div class="content">
 
@@ -120,18 +117,16 @@
 						<img src="${resource(dir: 'images', file: 'arrow_down.png')}"/><br/>
 					</g:remoteLink>
 					
-					<div id="checkdiv${a.id}">
-						<g:if test="${a.haveHelped}">
-							<g:link controller="answer" action="uncheck" update="checkdiv${a.id}" params="${[idanswer: a.id]}">
-								<img src="${resource(dir: 'images', file: 'check.png')}"/><br/>
-							</g:link>
-						</g:if>
-						<g:else>
-							<g:link controller="answer" action="check" update="checkdiv${a.id}" params="${[idanswer: a.id]}">
-								<img src="${resource(dir: 'images', file: 'uncheck.png')}"/><br/>
-							</g:link>
-						</g:else>
-					</div>
+					<g:if test="${a.haveHelped}">
+						<g:link controller="answer" action="uncheck" update="checkdiv${a.id}" params="${[idanswer: a.id]}">
+							<img src="${resource(dir: 'images', file: 'check.png')}"/><br/>
+						</g:link>
+					</g:if>
+					<g:else>
+						<g:link controller="answer" action="check" update="checkdiv${a.id}" params="${[idanswer: a.id]}">
+							<img src="${resource(dir: 'images', file: 'uncheck.png')}"/><br/>
+						</g:link>
+					</g:else>
 					
 				</div>
 			
