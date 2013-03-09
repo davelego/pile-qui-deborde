@@ -18,5 +18,5 @@ class Question extends Post {
 		body type: 'text'
 		sort date: "desc"
 	    answers sort:'totalVote', order:'asc' 
-	  }
+	}
 }

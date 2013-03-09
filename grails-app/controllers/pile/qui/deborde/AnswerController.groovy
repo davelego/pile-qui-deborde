@@ -5,6 +5,7 @@ import org.springframework.dao.DataIntegrityViolationException
 class AnswerController {
 	
 	def memberService
+	def answerService
 
 	/* Call from the list of the questions and redirect the user on a page */
 	/* where he can answer to the selected question                        */
@@ -33,7 +34,10 @@ class AnswerController {
 		}
 	}
 	
-	/* Save the answer in the database */
+	/**
+	 * Called when we have to save a new answer
+	 * @return
+	 */
 	def save () {
 		
 		def questionToAnswer = Question.get(params.idquestion)
@@ -44,14 +48,13 @@ class AnswerController {
 								  author: session.user)
 		
 		if (a.validate()) {
-			a.save()
+			answerService.save(a)
 			Member currentMember = Member.get(session.user.id)
-			currentMember.reputation += 5
+			memberService.updateReputation(currentMember, 5)
 			memberService.checkReputation(currentMember)
-			currentMember.save()
+			memberService.save(currentMember)
 			redirect(controller:"question", action: "detail", params: [id: questionToAnswer.id])
-		}
-		else {
+		} else {
 			render(view: "NewAnswerView", model:[question: questionToAnswer, answer: a])
 		}
 	}
@@ -61,120 +64,51 @@ class AnswerController {
      * @return
      */
     def edit() {
-        
         def answerToEdit = Answer.get(params.idanswer)
         render(view: "EditAnswerView", model:[answer: answerToEdit])
     }
 	
     /**
-     * Persist the modification of the answer
+     * Call the service to persist the modification
      * @return
      */
     def editAnswer () {
         
         def answerEdited = Answer.get(params.idanswer)
         answerEdited.body = params.get("body")
-        answerEdited.save()
+		answerService.save(answerEdited)
 		redirect(controller:"question", action:"detail", params: [id: answerEdited.question.id])
     }
-    
-//	static scaffold = true
-
-//    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
-//
-//    def index() {
-//        redirect(action: "list", params: params)
-//    }
-//
-//    def list(Integer max) {
-//        params.max = Math.min(max ?: 10, 100)
-//        [answerInstanceList: Answer.list(params), answerInstanceTotal: Answer.count()]
-//    }
-//
-//    def create() {		
-//        [answerInstance: new Answer(params)]
-//    }
-//
-//    def save() {
-//        def answerInstance = new Answer(params)
-//		//answerInstance.question = Question.get(params.question.id)
-//		log.fatal("Answer:" + answerInstance.question)
-//        if (!answerInstance.save(flush: true)) {
-//            render(view: "create", model: [answerInstance: answerInstance])
-//            return
-//        }
-//
-//        flash.message = message(code: 'default.created.message', args: [message(code: 'answer.label', default: 'Answer'), answerInstance.id])
-//        redirect(action: "show", id: answerInstance.id)
-//    }
-//
-//    def show(Long id) {
-//        def answerInstance = Answer.get(id)
-//        if (!answerInstance) {
-//            flash.message = message(code: 'default.not.found.message', args: [message(code: 'answer.label', default: 'Answer'), id])
-//            redirect(action: "list")
-//            return
-//        }
-//
-//        [answerInstance: answerInstance]
-//    }
-//
-//    def edit(Long id) {
-//        def answerInstance = Answer.get(id)
-//        if (!answerInstance) {
-//            flash.message = message(code: 'default.not.found.message', args: [message(code: 'answer.label', default: 'Answer'), id])
-//            redirect(action: "list")
-//            return
-//        }
-//
-//        [answerInstance: answerInstance]
-//    }
-//
-//    def update(Long id, Long version) {
-//        def answerInstance = Answer.get(id)
-//        if (!answerInstance) {
-//            flash.message = message(code: 'default.not.found.message', args: [message(code: 'answer.label', default: 'Answer'), id])
-//            redirect(action: "list")
-//            return
-//        }
-//
-//        if (version != null) {
-//            if (answerInstance.version > version) {
-//                answerInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-//                          [message(code: 'answer.label', default: 'Answer')] as Object[],
-//                          "Another user has updated this Answer while you were editing")
-//                render(view: "edit", model: [answerInstance: answerInstance])
-//                return
-//            }
-//        }
-//
-//        answerInstance.properties = params
-//
-//        if (!answerInstance.save(flush: true)) {
-//            render(view: "edit", model: [answerInstance: answerInstance])
-//            return
-//        }
-//
-//        flash.message = message(code: 'default.updated.message', args: [message(code: 'answer.label', default: 'Answer'), answerInstance.id])
-//        redirect(action: "show", id: answerInstance.id)
-//    }
-//
-//    def delete(Long id) {
-//        def answerInstance = Answer.get(id)
-//        if (!answerInstance) {
-//            flash.message = message(code: 'default.not.found.message', args: [message(code: 'answer.label', default: 'Answer'), id])
-//            redirect(action: "list")
-//            return
-//        }
-//
-//        try {
-//            answerInstance.delete(flush: true)
-//            flash.message = message(code: 'default.deleted.message', args: [message(code: 'answer.label', default: 'Answer'), id])
-//            redirect(action: "list")
-//        }
-//        catch (DataIntegrityViolationException e) {
-//            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'answer.label', default: 'Answer'), id])
-//            redirect(action: "show", id: id)
-//        }
-//    }
+	
+	/**
+	 * Called when the author of the related question mark this answer
+	 * @return
+	 */
+	def check () {
+		def answerToCheck = Answer.get(params.idanswer)
+		answerToCheck.haveHelped = true
+		answerService.save(answerToCheck)
+		// Reputation reward for the author of the answer
+		Member answerAuthor = Member.get(answerToCheck.author.id)
+		memberService.updateReputation(answerAuthor, 3)
+		memberService.checkReputation(answerAuthor)
+		memberService.save(answerAuthor)
+		redirect(controller:"question", action:"detail", params: [id: answerToCheck.question.id])
+	}
+	
+	/**
+	 * Called when the author of the related question unmark this answer
+	 * @return
+	 */
+	def uncheck () {
+		def answerToUncheck = Answer.get(params.idanswer)
+		answerToUncheck.haveHelped = false
+		answerService.save(answerToUncheck)
+		// Reputation reward for the author of the answer
+		Member answerAuthor = Member.get(answerToUncheck.author.id)
+		memberService.updateReputation(answerAuthor, -3)
+		memberService.checkReputation(answerAuthor)
+		memberService.save(answerAuthor)
+		redirect(controller:"question", action:"detail", params: [id: answerToUncheck.question.id])
+	}
 }

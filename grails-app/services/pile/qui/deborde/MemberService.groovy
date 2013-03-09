@@ -83,4 +83,23 @@ class MemberService {
 		
 		return res
 	}
+	
+	/**
+	 * Actually perform the save of the new user in DB
+	 * @param m the new user to save
+	 * @return
+	 */
+	def save (Member m) {
+		m.save()
+	}
+	
+	/**
+	 * Update the reputation of a member
+	 * @param m member to update the reputation
+	 * @param ptsReput number of reputation pts to add/remove
+	 * @return
+	 */
+	def updateReputation (Member m, int ptsReput) {
+		m.reputation += ptsReput
+	}
 }

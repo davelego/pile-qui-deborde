@@ -5,7 +5,7 @@ import java.util.Date;
 class Answer extends Post {
 	
 	String body
-	boolean topansewer = false;
+	boolean haveHelped = false;
 	
 	static belongsTo = [question:Question]
 	

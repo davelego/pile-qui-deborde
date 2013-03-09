@@ -7,6 +7,7 @@ class QuestionController {
 
 	def questionService
 	def memberService
+	def tagService
 
 	/* Main method of the controller */
     def index () {
@@ -29,6 +30,10 @@ class QuestionController {
 		render(view: "ListQuestionsView", model:[questions: listQuestions])
 	}
 	
+	/**
+	 * Give the detail of a question
+	 * @return
+	 */
 	def detail() {
 		def questionToDetail = Question.get(params.id)
 		def listAnswers = Answer.findAllByQuestion(questionToDetail, [sort:'totalVote', order:'desc'])
@@ -40,20 +45,9 @@ class QuestionController {
 		def currentRequest = RequestContextHolder.requestAttributes
 		
 		if (currentRequest) {
-		  def tags = params.get("tags");
-		  tags = tags.toString();
-		  def  tagsArray = tags.split(" ");
-		  def listTags = []
-		  for (String tag : tagsArray) {
-			 if(Tag.findAllByWord(tag)) {
-			  	listTags.add(Tag.findAllByWord(tag)[0])
-			 }
-			 else{
-				print tag
-				listTags = null;
-			 	break;
-			 }
-		  }
+		  def tags = params.get("tags").toString();
+		  def listTags = tagService.checkTags(tags)
+		  
 		  def Question q = new Question(title: params.get("title"),
 										body:  params.get("body"),
 										date:  new Date(),
@@ -61,17 +55,16 @@ class QuestionController {
 										tags: listTags)
   
 		  if (q.validate()) {
-			  q.save()
+			  questionService.save(q)
 			  
 			  /* Reputation reward for the author */
 			  Member currentMember = Member.get(session.user.id)
-			  currentMember.reputation += 10
+			  memberService.updateReputation(currentMember, 10)
 			  memberService.checkReputation(currentMember)
 			  for (Tag t : q.tags) {
 				  memberService.checkTags(currentMember, t.word)
 			  }
-			  currentMember.save()
-			  
+			  memberService.save(currentMember)
 			  redirect(action: "list")
 		  }
 		  else {
@@ -94,22 +87,12 @@ class QuestionController {
 		def questionEdited = Question.get(params.idquestion)
 		questionEdited.body = params.get("body")
 		
-		def tags = params.get("tags");
-		tags = tags.toString();
-		def  tagsArray = tags.split(" ");
-		def listTags = []
-		for (String tag : tagsArray) {
-		   if (Tag.findAllByWord(tag)) {
-				listTags.add(Tag.findAllByWord(tag)[0])
-		   } else {
-			  listTags = null;
-			  break;
-		   }
-		}
-		
+		def tags = params.get("tags").toString();
+		def listTags = tagService.checkTags(tags)
 		questionEdited.tags = listTags
+		
 		if (questionEdited.validate()) {
-			questionEdited.save()
+			questionService.save(questionEdited)
 			redirect(action:"detail", params: [id: questionEdited.id])
 		} else {
 			questionEdited.errors.rejectValue('tags',"0ne of your tags doesn\'t exists")
