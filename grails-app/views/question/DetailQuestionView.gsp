@@ -183,7 +183,7 @@
 								<g:if
 									test="${session.user.id == com.author.id  || session.user.role == "admin"}">
 									<g:link controller="comment" action="edit"
-										params="${[idcomment: com.id]}">
+										params="${[idcomment: com.id, idquestion:a.question.id]}">
 										<g:textField value="Edit" type="text" name="editBtnComment" readonly="readonly"/>
 									</g:link>
 									<g:link controller="comment" action="delete"

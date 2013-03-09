@@ -51,7 +51,8 @@ class CommentController {
     def edit () {
         
         def commentToEdit = Comment.get(params.idcomment)
-        render(view: "EditCommentView", model:[comment: commentToEdit])
+		System.out.println(params.idquestion);
+        render(view: "EditCommentView", model:[comment: commentToEdit,questionid:params.idquestion])
     }
 	
 	/**
@@ -72,8 +73,9 @@ class CommentController {
      */
     def editComment () {
         def commentToEdit = Comment.get(params.idcomment)
-        commentToEdit.body = params.get("body")
+        def idToEdit = params.idquestion != "" ? params.idquestion : commentToEdit.relatedPost.id;
+		commentToEdit.body = params.get("body")
         commentToEdit.save()
-        redirect(controller:"question", action: "detail", params: [id: commentToEdit.relatedPost.id])
+        redirect(controller:"question", action: "detail", params: [id: idToEdit])
     }
 }
