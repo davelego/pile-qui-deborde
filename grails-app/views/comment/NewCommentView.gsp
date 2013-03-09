@@ -3,60 +3,60 @@
 	<head>
 		<meta name="layout" content="main"/>
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'questionstyle.css')}" type="text/css">
-		<title>Answer to the question</title>
+		<title><g:message code="default.label.newcomment"/></title>
 	</head>
 	
 	<body>
 	
-		<a href="${createLink(uri: '/', absolute: true)}"><- Return to main page</a><br/><br/>
+		<a href="${createLink(uri: '/', absolute: true)}"><- <g:message code="default.label.mainpage"/></a><br/><br/>
 		
 		<g:renderErrors bean="${comment}" />
 			<g:form name="formnewcomment" params="${[idpost: post.id]}">	
 				<fieldset>
 				
 					<g:if test="${type == "question"}">
-						<legend>Comment the following question :</legend>
+						<legend><g:message code="default.label.commentquestion"/></legend>
 						
 						<p>
-							<label for="title">Title</label>
+							<label for="title"><g:message code="default.label.title"/></label>
 							<g:textField name="title" type="text" size="30" value="${post.title}" readonly="readonly"/>
 						</p>
 						
 						<p>
-							<label for="by">By</label>
+							<label for="by"><g:message code="default.label.by"/></label>
 							<g:textField name="by" type="text" size="30" value="${post.author.pseudo}" readonly="readonly"/>
 						</p>
 						
 						<p>
-							<label for="title">Tags</label>
+							<label for="title"><g:message code="default.label.tags"/></label>
 							<g:textField name="tags" type="text" size="30" value="${post.tags}" readonly="readonly" />
 						</p>
 						
 						<p>
-							<label for="qbody">Body</label>
+							<label for="qbody"><g:message code="default.label.body"/></label>
 							<g:textArea name="qbody" cols="50" rows="10" value="${post.body}" readonly="readonly" />
 						</p>
 					
 					</g:if>
 					<g:else>
-						<legend>Comment the following answer :</legend>
+						<legend><g:message code="default.label.commentanswer"/></legend>
 						
 						<p>
-							<label for="abody">Body</label>
+							<label for="abody"><g:message code="default.label.body"/></label>
 							<g:textArea name="abody" cols="50" rows="10" value="${post.body}" readonly="readonly" />
 						</p>
 						
 						<p>
-							<label for="by">By</label>
+							<label for="by"><g:message code="default.label.by"/></label>
 							<g:textField name="by" type="text" size="30" value="${post.author.pseudo}" readonly="readonly"/>
 						</p>
 						
 					</g:else>
 					
-					<legend>Please type your comment :</legend>
+					<legend><g:message code="default.label.typecomment"/></legend>
 					
 					<p class='${hasErrors(bean:comment,field:'body','errors')}'>					
-						<label for="body">Body</label>
+						<label for="body"><g:message code="default.label.body"/></label>
 						<g:textArea name="body" cols="50" rows="10" value="${comment?.body}" />				
 					</p>
 	

@@ -9,13 +9,13 @@
 
 <body>
 
-	<a href="${createLink(uri: '/', absolute: true)}"><- Return to main page</a><br/><br/>
+	<a href="${createLink(uri: '/', absolute: true)}"><- <g:message code="default.label.mainpage"/></a><br/><br/>
 
 	<div class="content">
 
 		<!-- Question -->
 		<div class="question">
-			<h2>Question</h2><br/>
+			<h2><g:message code="default.label.question"/> </h2><br/>
 			
 			<div style="float: left; width: 10%; margin-top:5%">
 				<g:remoteLink controller="post" action="voteUp" update="totalVote" params="${[idpost: q.id]}">
@@ -30,7 +30,7 @@
 			</div>
 			
 			<div style="float: right; width: 90%">
-				Title :
+				<g:message code="default.label.title"/> :
 				<g:link action="detail" id="${q.id}">
 					${q.title}
 				</g:link>
@@ -45,11 +45,11 @@
 				<div class="questionBody">
 					${q.body}
 				</div>
-				by :
+				<g:message code="default.label.by"/> :
 				${q.author.pseudo}
 				<br/>
 				
-				<div style="font-size: 0.7em;">posted the ${q.date}</div>
+				<div style="font-size: 0.7em;"><g:message code="default.label.date"/> ${q.date}</div>
 				<br/>
 			</div>
 		
@@ -78,39 +78,41 @@
 		</div>
 		
 		<!-- Comments in relation to the previous question -->
-		<div class="questionComments">
-			<g:if test="${q.comments}">
-				<h2>Comments</h2>
-				<br />
-				<g:each var="c" in="${q.comments}">
-					<div class="commentDetail">
-						${c.body}
-						<br />
-								by : ${c.author.pseudo}
-						<br />
-						<!-- Edit button for the author of the comment, or for the admin -->
-						<g:if
-							test="${session.user.id == c.author.id  || session.user.role == "admin"}">
-							<g:link controller="comment" action="edit"
-								params="${[idcomment: c.id]}">
-								<g:textField value="Edit" type="text" name="editBtnComment" readonly="readonly"/>
-							</g:link>
-							<g:link controller="comment" action="delete"
-								params="${[idcomment: c.id]}">
-								<g:textField value="Delete" type="text" name="deleteBtnQuestion" readonly="readonly"/>
-							</g:link>
+		<g:if test="${q.comments }">
+			<div class="questionComments">
+				<g:if test="${q.comments}">
+					<h2><g:message code="default.label.comment"/> </h2>
+					<br />
+					<g:each var="c" in="${q.comments}">
+						<div class="commentDetail">
+							${c.body}
 							<br />
-						</g:if>
-					</div>
-				</g:each>
-			</g:if>
-		</div>
+									<g:message code="default.label.by"/> : ${c.author.pseudo}
+							<br />
+							<!-- Edit button for the author of the comment, or for the admin -->
+							<g:if
+								test="${session.user.id == c.author.id  || session.user.role == "admin"}">
+								<g:link controller="comment" action="edit"
+									params="${[idcomment: c.id]}">
+									<g:textField value="Edit" type="text" name="editBtnComment" readonly="readonly"/>
+								</g:link>
+								<g:link controller="comment" action="delete"
+									params="${[idcomment: c.id]}">
+									<g:textField value="Delete" type="text" name="deleteBtnQuestion" readonly="readonly"/>
+								</g:link>
+								<br />
+							</g:if>
+						</div>
+					</g:each>
+				</g:if>
+			</div>
+		</g:if>
 		<br />
 
 		
 		<!-- Answers in relation with the previous question -->
 		<div class="questionAnswers">
-			<h2>Answers</h2><br/>
+			<h2><g:message code="default.label.answer"/> </h2><br/>
 				
 			<g:each var="a" in="${answers}">
 			
@@ -140,9 +142,9 @@
 			
 				<div style="float: right; width: 90%;">
 					${a.body} <br/>
-					by : ${a.author.pseudo} <br/>
+					<g:message code="default.label.by"/> : ${a.author.pseudo} <br/>
 					<span style="font-size: 0.7em;">
-						posted the ${a.date}
+						<g:message code="default.label.date"/> ${a.date}
 					</span>
 				</div>
 				
@@ -170,12 +172,12 @@
 				<!-- Comments in relation with the previous answer -->
 				<g:if test="${a.comments }">
 					<div class="questionComments">
-						<h4>Comments :</h4>
+						<h4><g:message code="default.label.comment"/>  :</h4>
 						<g:each var="com" in="${a.comments}">
 							<div class="commentDetail">
 								${com.body}
 								<br />
-											by : ${com.author.pseudo}
+											<g:message code="default.label.by"/> : ${com.author.pseudo}
 								<br />
 								<!-- Edit button for the author of the comment, or for the admin -->
 								<g:if
@@ -186,7 +188,7 @@
 									</g:link>
 									<g:link controller="comment" action="delete"
 										params="${[idcomment: com.id]}">
-										<g:textField value="Delete" type="text" name="deleteBtnQuestion" readonly="readonly"/>
+										<g:textField value="Delete"  type="text" name="deleteBtnQuestion" readonly="readonly"/>
 									</g:link>
 									<br />
 								</g:if>

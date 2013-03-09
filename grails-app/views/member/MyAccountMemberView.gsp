@@ -16,7 +16,7 @@
 							<legend>Profile details</legend>
 							
 							<p class='${hasErrors(bean:member,field:'firstName','errors')}' >					
-								<label for="firstname">First name : </label>
+								<label for="firstname"><g:message code="default.label.firstname"/> : </label>
 								<g:if test="${edit}">
 									<g:textField name="firstname" type="text" size="30" value="${member?.firstName}" />
 								</g:if>	
@@ -26,7 +26,7 @@
 							</p>
 							
 							<p class='${hasErrors(bean:member,field:'lastName','errors')}' >					
-								<label for="lastname">Last name : </label>	
+								<label for="lastname"><g:message code="default.label.lastname"/> : </label>	
 								<g:if test="${edit}">			
 									<g:textField name="lastname" type="text" size="30" value="${member?.lastName}" />	
 								</g:if>
@@ -36,7 +36,7 @@
 							</p>
 							
 							<p class='${hasErrors(bean:member,field:'email','errors')}'>					
-								<label for="email">Email : </label>	
+								<label for="email"><g:message code="default.label.email"/> : </label>	
 								<g:if test="${edit}">			
 									<g:textField type="text" name="email" size="30" value="${member?.email}" />	
 								</g:if>
@@ -46,7 +46,7 @@
 							</p>
 							
 							<p class='${hasErrors(bean:member,field:'pseudo','errors')}'>
-								<label for="pseudo">Pseudo : </label>
+								<label for="pseudo"><g:message code="default.label.pseudo"/> : </label>
 								<g:if test="${edit}">	
 									<g:textField type="text" name="pseudo" size="30" value="${member?.pseudo}" />
 								</g:if>
@@ -57,19 +57,19 @@
 							
 							<g:if test="${edit}">	
 								<p class='${hasErrors(bean:member,field:'password','errors')}'>
-									<label for="password">Password : </label>
+									<label for="password"><g:message code="default.label.password"/> : </label>
 									<g:passwordField type="password" name="password" size="30" />
 								</p>
 							
 								
 								<p class='${hasErrors(bean:member,field:'password','errors')}'>
-									<label for="repassword">Reconfirm : </label>
+									<label for="repassword"><g:message code="default.label.confirm"/> : </label>
 									<g:passwordField type="repassword" name="repassword" size="30" />
 								</p>
 							</g:if>
 							
 							<p class='${hasErrors(bean:member,field:'birthdate','errors')}'>
-								<label for="birthdate">Birth date : </label>
+								<label for="birthdate"><g:message code="default.label.birthdate"/> : </label>
 								<g:if test="${edit}">	
 									<g:datePicker name="birthdate" precision="day" value="${member?.dateNaissance}" />
 								</g:if>
@@ -79,7 +79,7 @@
 							</p>
 							
 							<p class='${hasErrors(bean:member,field:'bio','errors')}'>
-								<label for="bio">Bio : </label>
+								<label for="bio"><g:message code="default.label.bio"/> : </label>
 								<g:if test="${edit}">	
 									<g:textArea name="bio" cols="30" rows="10" value="${member?.bio}" />
 								</g:if>
@@ -89,7 +89,7 @@
 							</p>
 								
 							<p class='${hasErrors(bean:member,field:'website','errors')}'>
-								<label for="website">Website : </label>		
+								<label for="website"><g:message code="default.label.website"/> : </label>		
 								<g:if test="${edit}">			
 									<g:textField type="text" name="website" size="30" value="${member?.website}" />
 								</g:if>
@@ -99,7 +99,7 @@
 							</p>
 							<g:if test="${edit}">
 								<p class='${hasErrors(bean:member,field:'avatar','errors')}'>
-									<label for="avatar">Avatar : </label>
+									<label for="avatar"><g:message code="default.label.avatar"/> : </label>
 										
 										<input size="30" type="file" id="avatar" name="avatar" accept="image/*"/>
 									
@@ -107,16 +107,16 @@
 							</g:if>	
 							
 							<g:if test="${!edit}">
-								<label>Reputation : ${member?.reputation}</label><br/>
+								<label><g:message code="default.label.reputation"/> : ${member?.reputation}</label><br/>
 							</g:if>
 							
 							<g:if test="${!edit}">
-								<label>Badges : 
+								<label><g:message code="default.label.badges"/> : 
 									<g:if test="${member?.badges}"> 
 										<g:each var="b" in="${member?.badges}">${b.name} </g:each>
 									</g:if>
 									<g:else>
-										none
+										<g:message code="default.label.none"/>
 									</g:else>
 								</label>
 							</g:if>
@@ -142,14 +142,14 @@
 			</div>
 			<div style="width:100%;;float:left">
 				<div id="memberComments">
-					<h4>Answers</h4>
+					<h4><g:message code="default.label.answer"/></h4>
 					<hr/>
 					<g:each var="a" in="${member.givenAnswers}">
 							<g:link action="detail" controller="Question" params="${a.question}" id="${a.question.id}">${a.question.title}</g:link> <br/>
 					</g:each> <br/>
 				</div>
 				<div id="memberQuestions">
-					<h5>Questions</h5>
+					<h5><g:message code="default.label.question"/></h5>
 					<hr/>
 					<g:each var="q" in="${member.questions}">
 							<g:link action="detail" controller="Question" params="${q}" id="${q.id}">${q.title}</g:link> <br/>

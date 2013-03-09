@@ -105,15 +105,15 @@
 				</span>
 				<br/>
 			
-				<h1>Recently asked questions</h1><br/>
+				<h1><g:message code="default.label.recentlyAsked"/></h1><br/>
 	
 				<!-- display the questions -->
 				<g:each var="q" in="${questions}">
 					<div class="questionList">
-						Title  : <g:link controller="question" action="detail" id="${q.id}">${q.title}</g:link><br/>
-						<div class="questionAuthor"> by : ${q.author.pseudo} </div>	
-						<div class="questionTag"> Tags   :  <g:each var="t" in="${q.tags}"> <span class="tag"> ${t.word} </span></g:each></div>
-						<div style="font-size: 0.7em;">posted the ${q.date}</div><br/>
+						<g:message code="default.label.title"/> : <g:link controller="question" action="detail" id="${q.id}">${q.title}</g:link><br/>
+						<div class="questionAuthor"> <g:message code="default.label.by"/> : ${q.author.pseudo} </div>	
+						<div class="questionTag"> <g:message code="default.label.tags"/>  <g:each var="t" in="${q.tags}"> <span class="tag"> ${t.word} </span></g:each></div>
+						<div style="font-size: 0.7em;"><g:message code="default.label.date"/> ${q.date}</div><br/>
 					</div> 
 				</g:each>
 			
