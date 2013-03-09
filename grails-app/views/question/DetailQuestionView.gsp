@@ -4,7 +4,7 @@
 	<meta name="layout" content="main" />
 	<g:javascript library="jquery" plugin="jquery"/>
 	<!--<g:setProvider library="jquery"/>-->
-	<title>List of all the questions</title>
+	<title>${q.title}</title>
 </head>
 
 <body>
@@ -52,25 +52,28 @@
 				${q.author.pseudo}
 				<br/>
 				
-				<div style="font-size: 0.7em;">posted the ${q.date}</div><br/>
+				<div style="font-size: 0.7em;">posted the ${q.date}</div>
 				<br/>
 			</div>
-			
-			<g:if
-				test="${session.user.id == q.author.id  || session.user.role == "admin"}">
-				<g:link controller="question" action="edit"
+		
+			<div style="margin-left: 10%">
+				<g:if
+					test="${session.user.id == q.author.id  || session.user.role == "admin"}">
+					<g:link controller="question" action="edit"
+						params="${[idquestion: q.id]}">
+						<g:textField value="Edit" type="text" name="editBtnQuestion" readonly="readonly"/>
+					</g:link>
+				</g:if>
+				
+				<g:link controller="answer" action="answer"
 					params="${[idquestion: q.id]}">
-					<input value="Edit" />
+					<g:textField value="Answer" type="text" name="answerBtnQuestion" readonly="readonly"/>
 				</g:link>
-			</g:if>
-			<g:link controller="answer" action="answer"
-				params="${[idquestion: q.id]}">
-				<input value="Answer" />
-			</g:link>
-			<g:link controller="comment" action="comment"
-				params="${[idpost: q.id]}">
-				<input value="Comment" />
-			</g:link>
+				<g:link controller="comment" action="comment"
+					params="${[idpost: q.id]}">
+					<g:textField value="Comment" type="text" name="commentBtnQuestion" readonly="readonly"/>
+				</g:link>
+			</div>
 		</div>
 		
 		<!-- Comments in relation to the previous question -->
@@ -89,7 +92,7 @@
 							test="${session.user.id == c.author.id  || session.user.role == "admin"}">
 							<g:link controller="comment" action="edit"
 								params="${[idcomment: c.id]}">
-								<input value="Edit" />
+								<g:textField value="Edit" type="text" name="editBtnComment" readonly="readonly"/>
 							</g:link>
 							<br />
 						</g:if>
@@ -116,6 +119,20 @@
 					<g:remoteLink controller="post" action="voteDown" update="totalVoteAnswer${a.id}" params="${[idpost: a.id]}">
 						<img src="${resource(dir: 'images', file: 'arrow_down.png')}"/><br/>
 					</g:remoteLink>
+					
+					<div id="checkdiv${a.id}">
+						<g:if test="${a.haveHelped}">
+							<g:link controller="answer" action="uncheck" update="checkdiv${a.id}" params="${[idanswer: a.id]}">
+								<img src="${resource(dir: 'images', file: 'check.png')}"/><br/>
+							</g:link>
+						</g:if>
+						<g:else>
+							<g:link controller="answer" action="check" update="checkdiv${a.id}" params="${[idanswer: a.id]}">
+								<img src="${resource(dir: 'images', file: 'uncheck.png')}"/><br/>
+							</g:link>
+						</g:else>
+					</div>
+					
 				</div>
 			
 				<div style="float: right; width: 90%;">
@@ -126,24 +143,22 @@
 					</span>
 				</div>
 				
-	
 				<!-- Edit button for the author or the admin -->
-				<g:if
-					test="${session.user.id == a.author.id  || session.user.role == "admin"}">
-					<g:link controller="answer" action="edit"
-						params="${[idanswer: a.id]}">
-						<input value="Edit" />
-					</g:link>
-				</g:if>
-	
-				<!-- Comment button for everyone -->
-				<g:link controller="comment" action="comment"
-					params="${[idpost: a.id]}">
-					<input value="Comment" />
-				</g:link>
-				<br />
-				<br />
-			
+				<div style="margin-left: 10%">
+					<g:if
+						test="${session.user.id == a.author.id  || session.user.role == "admin"}">
+						<g:link controller="answer" action="edit"
+							params="${[idanswer: a.id]}">
+							<g:textField value="Edit" type="text" name="editBtnAnswer" readonly="readonly"/>
+						</g:link>
+					</g:if>
+		
+					<!-- Comment button for everyone -->
+					<g:link controller="comment" action="comment"
+						params="${[idpost: a.id]}">
+						<g:textField value="Comment" type="text" name="commentBtnAnswer" readonly="readonly"/>
+					</g:link><br/><br/>
+				</div>
 
 				<!-- Comments in relation with the previous answer -->
 				<g:if test="${a.comments }">
@@ -160,7 +175,7 @@
 									test="${session.user.id == com.author.id  || session.user.role == "admin"}">
 									<g:link controller="comment" action="edit"
 										params="${[idcomment: com.id]}">
-										<input value="Edit" />
+										<g:textField value="Edit" type="text" name="editBtnComment" readonly="readonly"/>
 									</g:link>
 									<br />
 								</g:if>

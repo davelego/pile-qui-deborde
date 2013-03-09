@@ -77,6 +77,38 @@ class AnswerController {
         answerEdited.save()
 		redirect(controller:"question", action:"detail", params: [id: answerEdited.question.id])
     }
+	
+	/**
+	 * Called when the author of the related question mark this answer
+	 * @return
+	 */
+	def check () {
+		def answerToCheck = Answer.get(params.idanswer)
+		answerToCheck.haveHelped = true
+		answerToCheck.save()
+		// Reputation reward for the author of the answer
+		Member answerAuthor = Member.get(answerToCheck.author.id)
+		answerAuthor.reputation += 3
+		memberService.checkReputation(answerAuthor)
+		answerAuthor.save()
+		redirect(controller:"question", action:"detail", params: [id: answerToCheck.question.id])
+	}
+	
+	/**
+	 * Called when the author of the related question unmark this answer
+	 * @return
+	 */
+	def uncheck () {
+		def answerToUncheck = Answer.get(params.idanswer)
+		answerToUncheck.haveHelped = false
+		answerToUncheck.save()
+		// Reputation loose for the author of the answer 
+		Member answerAuthor = Member.get(answerToUncheck.author.id)
+		answerAuthor.reputation -= 3
+		memberService.checkReputation(answerAuthor)
+		answerAuthor.save()
+		redirect(controller:"question", action:"detail", params: [id: answerToUncheck.question.id])
+	}
     
 //	static scaffold = true
 
