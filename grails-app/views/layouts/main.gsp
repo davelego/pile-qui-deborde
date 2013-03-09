@@ -25,7 +25,7 @@
 			<a href="${createLink(uri: '/', absolute: true)}">
 				<img src="${resource(dir: 'images', file: 'pile_logo.png')}" alt="Grails"/>
 			</a>
-			Pile qui déborde 
+			<span style="font-size: 1.5em;"><span style="font-weight: normal;">Pile</span><span style="font-weight: bold;">quidéborde</span></span> 
 			
 			<div class="menu" >
 				<div class="menu_item"> Question </div>

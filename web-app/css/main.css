@@ -90,7 +90,7 @@ body {
 }
 
 a:link, a:visited, a:hover {
-	color: #48802c;
+	color: #6C7876;
 }
 
 a:hover, a:active {
@@ -98,10 +98,16 @@ a:hover, a:active {
 }
 
 h1 {
-	color: #48802c;
-	font-weight: normal;
-	font-size: 1.25em;
+	color: #D09339;
+	font-weight: bold;
+	font-size: 1.75em;
 	margin: 0.8em 0 0.3em 0;
+}
+
+h2 {
+	color: #D09339;
+	font-weight: bold;
+	font-size: 1.5em;
 }
 
 ul {
@@ -133,7 +139,7 @@ img {
 }
 
 .footer {
-	background: #abbf78;
+	background: #6C7876;
 	color: #000;
 	clear: both;
 	font-size: 0.8em;
