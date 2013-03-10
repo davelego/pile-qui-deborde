@@ -17,4 +17,8 @@ class TagService {
 		
 		return listTags
     }
+    
+    def save (Tag t) {
+        t.save()
+    }
 }
