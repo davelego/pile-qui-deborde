@@ -163,6 +163,4 @@ class MemberController {
 		out.write(avatarUser.avatar);
 		out.close();
 	  }
-	
-	
 }

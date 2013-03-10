@@ -56,7 +56,6 @@ class MemberService {
 					nbSameTags ++
 				}
 			}
-			
 		}
 		
 		if (nbSameTags >= 5 && !haveBadge(m, tagWord)) {
