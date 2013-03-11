@@ -1,6 +1,7 @@
 import java.util.Date;
 
 import pile.qui.deborde.Answer
+import pile.qui.deborde.Badge
 import pile.qui.deborde.Member
 import pile.qui.deborde.Question
 import pile.qui.deborde.Tag
@@ -40,7 +41,8 @@ class BootStrap {
 			website:"http://www.superapha.com",
 			photoPath:null,
 			dateNaissance:Date.parse("yyyy-MM-dd", "1990-09-19"),
-			dateInscription:new Date())
+			dateInscription:new Date(),
+            badges: [])
 		
 		if (!m2.save()){
 			log.error "Error on USER2"
@@ -168,6 +170,10 @@ class BootStrap {
 			log.error "Error on ANSWER"
 			log.error "${a2.errors}"
 		}
+        
+        m1.badges.add(new Badge(name: Badge.BN_REPUT_10))
+        m1.badges.add(new Badge(name: "ExpertOfGrails"))
+        m2.badges.add(new Badge(name: Badge.BN_REPUT_10))
     }
 		
 		

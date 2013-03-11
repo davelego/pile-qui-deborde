@@ -101,4 +101,19 @@ class MemberService {
 	def updateReputation (Member m, int ptsReput) {
 		m.reputation += ptsReput
 	}
+    
+    def getMembersByBadge (Badge badge) {
+        
+        def listMember = []
+        for (Member m : Member.list()) {
+            for (Badge b : m.badges) {
+                if (b.name == badge.name) {
+                    listMember.add(m)
+                    break
+                }
+            }
+        }
+        
+        return listMember
+    }
 }
