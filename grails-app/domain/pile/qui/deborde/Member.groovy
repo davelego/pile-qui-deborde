@@ -26,7 +26,7 @@ class Member {
 		password(blank:false, size: 5..15)
 		email(blank:false, unique:true, email:true)
 		website(url:true)
-		dateNaissance(blank:false, max: new Date())
+		dateNaissance(max: new Date())
 		role(inList:["author", "admin"])
 		avatar(nullable:true,maxSize: 16384)
 		avatarType(nullable:true)

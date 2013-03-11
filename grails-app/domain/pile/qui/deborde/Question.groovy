@@ -3,7 +3,6 @@ package pile.qui.deborde
 class Question extends Post {
 	
 	String title
-	String body
 	
 	static hasMany = [answers:Answer, tags:Tag]
 	
@@ -15,7 +14,6 @@ class Question extends Post {
     }
 	
 	static mapping = {
-		body type: 'text'
 		sort date: "desc"
 	    answers sort:'totalVote', order:'asc' , cascade: 'all-delete-orphan'
 	}

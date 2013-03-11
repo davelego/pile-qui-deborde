@@ -3,8 +3,7 @@ package pile.qui.deborde
 import java.util.Date;
 
 class Answer extends Post {
-	
-	String body
+
 	boolean haveHelped = false;
 	
 	static belongsTo = [question:Question]
@@ -12,9 +11,5 @@ class Answer extends Post {
 	static constraints = {
 		body(blank:false, minSize: 20)
 		date(blank:false)
-	}
-	
-	static mapping = {
-		body type: 'text'
 	}
 }

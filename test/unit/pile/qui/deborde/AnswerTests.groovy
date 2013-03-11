@@ -10,6 +10,7 @@ import grails.test.mixin.*
 class AnswerTests {
 
     void testConstraints() {
-	   assertTrue(true)
+      
+      
     }
 }
