@@ -6,9 +6,12 @@
 	</head>
 	
 	<body>
-	
+		
 		<a href="${createLink(uri: '/', absolute: true)}"><- Return to main page</a><br/><br/>
-	
+		<g:link controller="tag">Add a new tag</g:link> <br/><br/>
+		
+		
+		
 		<g:each var="t" in="${tags}">
 			<div class="oneFullTag">
 				<div class="questionTag"><span class="tag"> <g:link controller="question" action="questionByTags" id="${t.id}">${t.word}</g:link></span></div>

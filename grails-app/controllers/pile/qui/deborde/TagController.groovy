@@ -7,6 +7,16 @@ class TagController {
 		render (view: "NewTagsView")
 	}
 	
+	def beforeInterceptor = [action:this.&auth, except:'list']
+	
+	/* Allow the authentification */
+	def auth() {
+		//print session.user
+		if (!session.user) {
+			redirect(controller:"member", action:"index")
+			return false
+		}
+	}
 	
 	/* List all the questions in database */
 	def list() {

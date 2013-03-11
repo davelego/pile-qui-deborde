@@ -188,7 +188,7 @@
 										<g:textField value="Edit" type="text" name="editBtnComment" readonly="readonly"/>
 									</g:link>
 									<g:link controller="comment" action="delete"
-										params="${[idcomment: com.id, idquestion:a.question.id]}">
+										params="${[idcomment: com.id	, idquestion:a.question.id]}">
 										<g:textField value="Delete"  type="text" name="deleteBtnQuestion" readonly="readonly"/>
 									</g:link>
 									<br />
