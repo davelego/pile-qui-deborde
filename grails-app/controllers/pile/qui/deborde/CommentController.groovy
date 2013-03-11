@@ -23,24 +23,25 @@ class CommentController {
      * @return
      */
     def save () {
-        
+		
         def postToComment = Post.get(params.idpost)
-        print postToComment
+        
         def Comment c = new Comment(body: params.get("body"),
                                     date: new Date(),
                                     relatedPost: postToComment,
 								    author: session.user)
+		def type = postToComment instanceof Question ? "question" : "answer"
         
         if (c.validate()) {
             c.save()
             if (postToComment instanceof Question) {
                 redirect(controller:"question", action: "detail", params: [id: postToComment.id])
             } else {
-            redirect(controller:"question", action: "detail", params: [id: postToComment.question.id])
+            	redirect(controller:"question", action: "detail", params: [id: postToComment.question.id])
             }
         }
         else {
-            render(view: "NewCommentView", model:[question: postToComment, comment: c])
+            render(view: "NewCommentView", model:[type:type,post: postToComment, comment: c])
         }
     }
     
