@@ -108,7 +108,6 @@ class QuestionController {
 			print questionEdited.errors.each {
 				print it
 			}
-			questionEdited.errors.rejectValue('tags',"0ne of your tags doesn\'t exists")
 			render(view: "EditQuestionView", model:[question: questionEdited])
 		}
 	}
