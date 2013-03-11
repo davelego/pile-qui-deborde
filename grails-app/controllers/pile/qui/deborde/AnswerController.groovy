@@ -88,8 +88,12 @@ class AnswerController {
         
         def answerEdited = Answer.get(params.idanswer)
         answerEdited.body = params.get("body")
-		answerService.save(answerEdited)
-		redirect(controller:"question", action:"detail", params: [id: answerEdited.question.id])
+        if (answerEdited.validate()) {
+    		answerService.save(answerEdited)
+    		redirect(controller:"question", action:"detail", params: [id: answerEdited.question.id])
+        } else {
+            render(view: "EditAnswerView", model:[answer: answerEdited])
+        }
     }
 	
 	/**

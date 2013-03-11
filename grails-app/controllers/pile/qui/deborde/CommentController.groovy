@@ -76,7 +76,12 @@ class CommentController {
         def commentToEdit = Comment.get(params.idcomment)
         def idToEdit = (params.idquestion != "") ? params.idquestion : commentToEdit.relatedPost.id;
 		commentToEdit.body = params.get("body")
-        commentToEdit.save()
-        redirect(controller:"question", action: "detail", params: [id: idToEdit])
+        
+        if (commentToEdit.validate()) {
+            commentToEdit.save()
+            redirect(controller:"question", action: "detail", params: [id: idToEdit])
+        } else {
+            render(view: "EditCommentView", model:[comment: commentToEdit, questionid:params.idquestion])
+        }
     }
 }
