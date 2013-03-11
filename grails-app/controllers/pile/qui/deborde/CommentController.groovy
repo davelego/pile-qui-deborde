@@ -25,7 +25,7 @@ class CommentController {
     def save () {
         
         def postToComment = Post.get(params.idpost)
-        
+        print postToComment
         def Comment c = new Comment(body: params.get("body"),
                                     date: new Date(),
                                     relatedPost: postToComment,
@@ -62,7 +62,8 @@ class CommentController {
 	 */
 	def delete () {
 		def com = Comment.get(params.idcomment)
-		def postid = com.relatedPost.id
+		//def postid = com.relatedPost.id
+		def postid = (params.idquestion != "") ? params.idquestion : com.relatedPost.id;
 		com.delete()
 		redirect(controller:"question", action: "detail", params: [id: postid])
 	}
@@ -73,7 +74,7 @@ class CommentController {
      */
     def editComment () {
         def commentToEdit = Comment.get(params.idcomment)
-        def idToEdit = params.idquestion != "" ? params.idquestion : commentToEdit.relatedPost.id;
+        def idToEdit = (params.idquestion != "") ? params.idquestion : commentToEdit.relatedPost.id;
 		commentToEdit.body = params.get("body")
         commentToEdit.save()
         redirect(controller:"question", action: "detail", params: [id: idToEdit])

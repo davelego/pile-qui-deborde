@@ -5,14 +5,18 @@ import org.springframework.web.multipart.MultipartHttpServletRequest
 
 class MemberController {
 
+	/* displays the login form */
     def index () {
 		render (view: "login.gsp") 
 	}
 	
+	/* displays the register form */
 	def register () {
 		render (view: "NewMemberView.gsp")
 	}
 	
+	
+	/* logs a user, or displays fail */
 	def login () {
 		
 		def pseudo = params.get("pseudo")
@@ -27,11 +31,13 @@ class MemberController {
 		}
 	}
 	
+	/* logouts the user */
 	def logout = {
 		session.user = null
 		redirect(uri:"/")
 	}
 	
+	/* list all members */
 	def list() {
 		 def listMembers = Member.list()
 		 render(view: "ListMembersView", model:[members: listMembers])
@@ -53,21 +59,22 @@ class MemberController {
 		// Get the avatar file from the multi-part request 
 		def f = request.getFile('avatar')
 		
-		// List of OK mime-types 
-		def okcontents = ['image/png', 'image/jpeg', 'image/gif'] 
-		
-		if (! okcontents.contains(f.getContentType())) { 
-			flash.message = "Avatar must be one of: ${okcontents}" 
-			render(view:'select_avatar', model:[user:user]) 
-			return; 
-		}
-		
-		// Save the image and mime type 
-		m.avatar = f.getBytes() 
-		m.avatarType = f.getContentType() 
-		log.info("File uploaded: " + m.avatarType)
-		
+		if(f) {
+			// List of OK mime-types 
+			def okcontents = ['image/png', 'image/jpeg', 'image/gif'] 
 			
+			if (! okcontents.contains(f.getContentType())) { 
+				flash.message = "Avatar must be one of: ${okcontents}" 
+				render(view:'select_avatar', model:[user:user]) 
+				return; 
+			}
+			
+			// Save the image and mime type 
+			m.avatar = f.getBytes() 
+			m.avatarType = f.getContentType() 
+			log.info("File uploaded: " + m.avatarType)
+		}	
+				
 							  
 		/* Validation des informations du nouveau membre par rapport aux contraintres */  
 		if (m.validate()) {
@@ -83,6 +90,9 @@ class MemberController {
 			}
 			
 		} else {
+			m.errors.allErrors.each {
+				println it
+			}
 			render(view: "NewMemberView", model:[member: m])
 		}
 	}
@@ -103,6 +113,7 @@ class MemberController {
 		render(view: "MyAccountMemberView", model:[member: currentMember,edit:true])
 	}
 	
+	/* updates user profile */
 	def updateProfile () {
 		def memberEdited 				= Member.get(params.memberToEdit)
 		memberEdited.firstName 			= params.get("firstname")
@@ -118,19 +129,21 @@ class MemberController {
 		// Get the avatar file from the multi-part request
 		def f = request.getFile('avatar')
 		
-		// List of OK mime-types
-		def okcontents = ['image/png', 'image/jpeg', 'image/gif']
-		
-		if (! okcontents.contains(f.getContentType())) {
-			flash.message = "Avatar must be one of: ${okcontents}"
-			render(view: "MyAccountMemberView", model:[member: Member.get(params.memberToEdit)])
-			return;
+		if(f) {
+			// List of OK mime-types
+			def okcontents = ['image/png', 'image/jpeg', 'image/gif']
+			
+			if (! okcontents.contains(f.getContentType())) {
+				flash.message = "Avatar must be one of: ${okcontents}"
+				render(view: "MyAccountMemberView", model:[member: Member.get(params.memberToEdit)])
+				return;
+			}
+			
+			// Save the image and mime type
+			memberEdited.avatar = f.getBytes()
+			memberEdited.avatarType = f.getContentType()
+			log.info("File uploaded: " + memberEdited.avatarType)
 		}
-		
-		// Save the image and mime type
-		memberEdited.avatar = f.getBytes()
-		memberEdited.avatarType = f.getContentType()
-		log.info("File uploaded: " + memberEdited.avatarType)
 		
 		/* Validation des informations du nouveau membre par rapport aux contraintres */
 		if (memberEdited.validate()) {
@@ -151,6 +164,7 @@ class MemberController {
 	}
 	
 	
+	/* manages the display of an avatar */
 	def avatar_image = {
 		def avatarUser = Member.get(params.id)
 		if (!avatarUser || !avatarUser.avatar || !avatarUser.avatarType) {
