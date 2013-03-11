@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta name="layout" content="main"/>
-		<title>Member for the badge ${badge.name}]</title>
+		<title>Member for the badge ${badge.name}</title>
 	</head>
 	
 	<body>

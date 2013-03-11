@@ -9,6 +9,8 @@
 	
 		<a href="${createLink(uri: '/', absolute: true)}"><- Return to main page</a><br/><br/>
 		
+		<h2>Members</h2>
+		
 		<g:each var="m" in="${members}">
 			<div class="memberInfo">
 				<g:link controller="member" action="myAccount" id="${m.id}">${m.pseudo}</g:link>         <br/>
