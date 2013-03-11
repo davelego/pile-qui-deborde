@@ -3,6 +3,7 @@
 	<head>
 		<meta name="layout" content="main"/>
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'questionstyle.css')}" type="text/css">
+		<g:javascript library='jquery' />
 		<title><g:message code="default.label.newquestion"/></title>
 	</head>
 	
@@ -23,7 +24,15 @@
 					
 					<p class='${hasErrors(bean:question,field:'tags','errors')}'>					
 						<label for="tags"><g:message code="default.label.tags"/></label>
-						<g:textField name="tags" type="text" size="30" value="${question?.tags}" />					
+						<g:textField name="tags" type="text" size="30" />
+							<jq:jquery>
+								$('#tags').val('')
+							</jq:jquery>
+						<g:each var="t" in="${question?.tags}">
+							<jq:jquery>
+								$('#tags').val($('#tags').val() + '${t.word} ');                                
+							</jq:jquery>
+						</g:each>				
 					</p>
 					
 					<p class='${hasErrors(bean:question,field:'body','errors')}'>

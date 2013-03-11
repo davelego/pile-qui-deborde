@@ -72,7 +72,7 @@ class QuestionController {
 			  q.errors.each {
 				  print it
 			  }
-			q.errors.rejectValue('tags','one of your tags is wrong')
+			//q.errors.rejectValue('tags','one of your tags is wrong')
 			render(view: "NewQuestionView", model:[question: q])
 		  }
 		}
