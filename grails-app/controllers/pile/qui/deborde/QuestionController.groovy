@@ -121,6 +121,6 @@ class QuestionController {
 				inList('word', word)
 			}
 		}
-		render(view:"QuestionByTagView", model:[questions: results])
+		render(view:"QuestionByTagView", model:[questions: results, tagWord:word])
 	}
 }
