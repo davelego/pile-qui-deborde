@@ -18,7 +18,6 @@
 			</div>
 			
 		</g:each>
-	
 	</body>
 	
 </html>

@@ -4,6 +4,8 @@ import org.springframework.web.multipart.MultipartFile
 import org.springframework.web.multipart.MultipartHttpServletRequest
 
 class MemberController {
+    
+    def memberService
 
 	/* displays the login form */
     def index () {
@@ -169,7 +171,13 @@ class MemberController {
 		}
 	}
 	
-	
+    def membersByBadge () {
+        def b = Badge.get(params.id)
+        def listMembers = memberService.getMembersByBadge(b)
+        render(view: "MembersByBadgeView", model:[badge:b, members: listMembers])
+        
+    }
+    
 	/* manages the display of an avatar */
 	def avatar_image = {
 		def avatarUser = Member.get(params.id)

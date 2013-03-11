@@ -28,20 +28,23 @@
 			<span style="font-size: 35px;"><span style="font-weight: normal;">Pile</span><span style="font-weight: bold;">quidéborde</span></span> 
 			
 			<div class="menu" >
-			
-				<div class="menu_item"> <g:link controller="tag" action="list">List tags</g:link> </div>
-				<div class="menu_item"> <g:link controller="tag">New tag</g:link> </div>
-				<div class="menu_item"> <g:link controller="question">New question</g:link> </div>
-				<div class="menu_item"> <g:link controller="question" action="list">List questions</g:link> </div>
-				<g:if test="${!session.user}">
-					<div class="menu_item"> <g:link controller="member" action="register">Register</g:link> </div>
-				</g:if>
-				<g:else>
-					<div class="menu_item"> <g:link controller="member" action="myAccount">My Account</g:link></div>
-				</g:else>
+				<div class="menu_item"> <g:link controller="question">Ask</g:link> </div>
+				<div class="menu_item"> <g:link controller="badge" action="list">Badges</g:link> </div>
+				<div class="menu_item"> <g:link controller="member" action="list">Members</g:link> </div>
+				<div class="menu_item"> <g:link controller="tag" action="list">Tags</g:link> </div>
+				<div class="menu_item"> <g:link controller="question" action="list">Questions</g:link> </div>
 				
-			</div>		
-			<hr/>	
+					<g:if test="${!session.user}">
+						<div class="menu_item"> <g:link controller="member" action="register">Register</g:link> </div>
+					</g:if>
+					<g:else>
+						<div class="menu_item"> <g:link controller="member" action="myAccount">My Account</g:link></div>
+					</g:else>
+				</div>
+				
+				
+				
+			<hr/>
 		</div>
 		<g:layoutBody/>
 		<div class="footer" role="contentinfo"></div>

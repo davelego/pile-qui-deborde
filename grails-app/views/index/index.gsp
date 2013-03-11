@@ -90,7 +90,7 @@
 		
 			<!-- div for the possible actions -->
 			<div style="padding: 0.6em;">
-				<span>
+				<!-- <span>
 					<g:link controller="member" action="register">Register</g:link>
 					<g:link controller="member" action="myAccount">My account</g:link>
 					<g:link controller="member" action="list">List all the members</g:link>
@@ -103,7 +103,7 @@
 					<g:link controller="tag">Add a new tag</g:link>
 					<g:link controller="tag" action="list">List all the tags</g:link>
 				</span>
-				<br/>
+				<br/> -->
 			
 				<h1><g:message code="default.label.recentlyAsked"/></h1><br/>
 	
