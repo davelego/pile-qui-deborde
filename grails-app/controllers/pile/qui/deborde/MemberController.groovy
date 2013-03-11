@@ -59,13 +59,17 @@ class MemberController {
 		// Get the avatar file from the multi-part request 
 		def f = request.getFile('avatar')
 		
-		if(f) {
+		if(!f.empty) {
 			// List of OK mime-types 
 			def okcontents = ['image/png', 'image/jpeg', 'image/gif'] 
 			
 			if (! okcontents.contains(f.getContentType())) { 
+				
 				flash.message = "Avatar must be one of: ${okcontents}" 
-				render(view:'select_avatar', model:[user:user]) 
+				m.errors.allErrors.each {
+					println it
+				}
+				render(view: "NewMemberView", model:[member: m])
 				return; 
 			}
 			
@@ -129,7 +133,7 @@ class MemberController {
 		// Get the avatar file from the multi-part request
 		def f = request.getFile('avatar')
 		
-		if(f) {
+		if(!f.empty) {
 			// List of OK mime-types
 			def okcontents = ['image/png', 'image/jpeg', 'image/gif']
 			

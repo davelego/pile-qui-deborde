@@ -25,14 +25,21 @@
 			<a href="${createLink(uri: '/', absolute: true)}">
 				<img src="${resource(dir: 'images', file: 'pile_logo.png')}" alt="Grails"/>
 			</a>
-			<span style="font-size: 1.5em;"><span style="font-weight: normal;">Pile</span><span style="font-weight: bold;">quidéborde</span></span> 
+			<span style="font-size: 35px;"><span style="font-weight: normal;">Pile</span><span style="font-weight: bold;">quidéborde</span></span> 
 			
 			<div class="menu" >
-				<div class="menu_item"> Question </div>
-				<div class="menu_item"> Tags </div>
-				<div class="menu_item"> Users </div>
-				<div class="menu_item"> Badges </div>
-				<div class="menu_item"> Unanswered </div>
+			
+				<div class="menu_item"> <g:link controller="tag" action="list">List tags</g:link> </div>
+				<div class="menu_item"> <g:link controller="tag">New tag</g:link> </div>
+				<div class="menu_item"> <g:link controller="question">New question</g:link> </div>
+				<div class="menu_item"> <g:link controller="question" action="list">List questions</g:link> </div>
+				<g:if test="${!session.user}">
+					<div class="menu_item"> <g:link controller="member" action="register">Register</g:link> </div>
+				</g:if>
+				<g:else>
+					<div class="menu_item"> <g:link controller="member" action="myAccount">My Account</g:link></div>
+				</g:else>
+				
 			</div>		
 			<hr/>	
 		</div>
