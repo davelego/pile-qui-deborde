@@ -14,7 +14,7 @@ class QuestionController {
 		render (view: "NewQuestionView") 
 	}
 	
-	def beforeInterceptor = [action:this.&auth, except:'list']
+	def beforeInterceptor = [action:this.&auth, except:['list','questionByTags']]
 	
 	/* Allow the authentification */
 	def auth() {
@@ -58,7 +58,8 @@ class QuestionController {
 			  questionService.save(q)
 			  
 			  /* Reputation reward for the author */
-			  Member currentMember = session.user
+			  //Member currentMember = session.user
+			  Member currentMember = Member.get(session.user.id)
 			  memberService.updateReputation(currentMember, 10)
 			  memberService.checkReputation(currentMember)
 			  for (Tag t : q.tags) {

@@ -21,7 +21,8 @@ class BootStrap {
 			avatar:null,
 			dateNaissance:Date.parse("yyyy-MM-dd", "1990-09-21"),
 			dateInscription:new Date(),
-			role:"admin")
+			role:"admin",
+			badges: [])
 		
 		if (!m1.save()){
 		    log.error "Error on USER1"

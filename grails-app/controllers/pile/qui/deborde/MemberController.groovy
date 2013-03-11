@@ -54,12 +54,13 @@ class MemberController {
 			website: params.get("website"),
 			avatar:null,
 			dateNaissance: params.get("birthdate"),
-			dateInscription: new Date());
+			dateInscription: new Date(),
+			badges:[]);
 		
 		// Get the avatar file from the multi-part request 
 		def f = request.getFile('avatar')
 		
-		if(!f.empty) {
+		if(f && !f.empty) {
 			// List of OK mime-types 
 			def okcontents = ['image/png', 'image/jpeg', 'image/gif'] 
 			
@@ -133,7 +134,7 @@ class MemberController {
 		// Get the avatar file from the multi-part request
 		def f = request.getFile('avatar')
 		
-		if(!f.empty) {
+		if(f && !f.empty) {
 			// List of OK mime-types
 			def okcontents = ['image/png', 'image/jpeg', 'image/gif']
 			
