@@ -686,3 +686,9 @@ a.skip {
 	width:200px;
 	margin-right:20px;
 }
+
+.memberInfo {
+	float:left;
+	width:200px;
+	margin:20px;
+}
