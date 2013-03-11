@@ -12,6 +12,7 @@ class PostController {
 	 */
     def voteUp () {
 		def postVoted = Post.get(params.idpost)
+
 		def memberWhoVotes = session.user
 		boolean haveAlreadyVoted = voteService.checkIfAlreadyVoted(postVoted,memberWhoVotes)
 		

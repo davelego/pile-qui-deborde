@@ -47,7 +47,7 @@ class QuestionController {
 		if (currentRequest) {
 		  def tags = params.get("tags").toString();
 		  def listTags = tagService.checkTags(tags)
-		  
+		  print listTags
 		  def Question q = new Question(title: params.get("title"),
 										body:  params.get("body"),
 										date:  new Date(),
@@ -58,7 +58,7 @@ class QuestionController {
 			  questionService.save(q)
 			  
 			  /* Reputation reward for the author */
-			  Member currentMember = Member.get(session.user.id)
+			  Member currentMember = session.user
 			  memberService.updateReputation(currentMember, 10)
 			  memberService.checkReputation(currentMember)
 			  for (Tag t : q.tags) {
@@ -68,6 +68,9 @@ class QuestionController {
 			  redirect(action: "list")
 		  }
 		  else {
+			  q.errors.each {
+				  print it
+			  }
 			q.errors.rejectValue('tags','one of your tags is wrong')
 			render(view: "NewQuestionView", model:[question: q])
 		  }
@@ -101,6 +104,9 @@ class QuestionController {
 			questionService.save(questionEdited)
 			redirect(action:"detail", params: [id: questionEdited.id])
 		} else {
+			print questionEdited.errors.each {
+				print it
+			}
 			questionEdited.errors.rejectValue('tags',"0ne of your tags doesn\'t exists")
 			render(view: "EditQuestionView", model:[question: questionEdited])
 		}
