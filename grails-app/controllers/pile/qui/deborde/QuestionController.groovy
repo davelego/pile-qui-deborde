@@ -111,4 +111,16 @@ class QuestionController {
 			render(view: "EditQuestionView", model:[question: questionEdited])
 		}
 	}
+	
+	def questionByTags () {
+		def c = Question.createCriteria()
+		def word = Tag.get(params.id).word;
+
+		def results = c.list {
+			tags {
+				inList('word', word)
+			}
+		}
+		render(view:"QuestionByTagView", model:[questions: results])
+	}
 }

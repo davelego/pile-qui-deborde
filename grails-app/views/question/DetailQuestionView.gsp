@@ -37,7 +37,7 @@
 				<br /> <br /> Tags :
 				<g:each var="t" in="${q.tags}">
 					<span class="tag">
-						${t.word}
+						<g:link controller="question" action="questionByTags" id="${t.id}">${t.word}</g:link>
 					</span>
 				</g:each>
 				<br />

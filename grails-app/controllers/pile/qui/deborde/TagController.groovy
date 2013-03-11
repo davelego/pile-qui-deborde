@@ -30,6 +30,6 @@ class TagController {
 			render(view: "NewTagsView", model:[tag: t])
 		}
 	}
-
+	
 	
 }

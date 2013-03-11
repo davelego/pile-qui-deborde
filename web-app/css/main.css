@@ -675,3 +675,12 @@ a.skip {
 .commentDetail {
 	margin:10px;
 }
+
+.oneFullTag {
+	float:left
+}
+
+.descTag {
+	width:200px;
+	margin-right:20px;
+}
