@@ -8,7 +8,8 @@
 	<body>
 	
 		<a href="${createLink(uri: '/', absolute: true)}"><- <g:message code="default.label.mainpage"/></a><br/><br/>
-
+		<h2><g:message code="default.label.questiontag"/> : ${tagWord }</h2>
+		<br/>
 		<g:each var="q" in="${questions}">
 			<div class="questionList">
 				<g:message code="default.label.title"/> : <g:link action="detail" id="${q.id}">${q.title}</g:link>         <br/>
