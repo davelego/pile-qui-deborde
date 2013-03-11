@@ -9,7 +9,6 @@ class Question extends Post {
     static constraints = {
 		title(blank:false, size: 10..280)
 		body(blank:false, minSize: 50)
-		date(blank:false)
 		tags(nullable: false, minSize: 1, maxSize: 5)
     }
 	

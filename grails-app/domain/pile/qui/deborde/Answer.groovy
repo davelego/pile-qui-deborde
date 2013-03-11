@@ -10,6 +10,5 @@ class Answer extends Post {
 	
 	static constraints = {
 		body(blank:false, minSize: 20)
-		date(blank:false)
 	}
 }

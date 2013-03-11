@@ -11,7 +11,6 @@ class Comment {
 	
 	static constraints = {
 		body(blank:false)
-		date(blank:false)
 	}
 	
 	static mapping = {

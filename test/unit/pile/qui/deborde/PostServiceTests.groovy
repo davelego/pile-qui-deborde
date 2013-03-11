@@ -30,7 +30,7 @@ class PostServiceTests {
     void testSave () {
         assertEquals Post.getAll().size(), 0
         
-        Member m = new Member(
+        def m = new Member(
             firstName:"David",
             lastName:"CHARETTE",
             email:"dav.c@hotmail.fr",
@@ -38,11 +38,10 @@ class PostServiceTests {
             password:"Machin",
             bio:"Je suis Stonkeep",
             website:"http://www.stonkeep.com",
-            avatar:null,
             dateNaissance:Date.parse("yyyy-MM-dd", "1990-09-21"),
             dateInscription:new Date())
         
-        Post p = new Post (author:m, date: new Date())
+        Post p = new Post (author:m, date: new Date(), body:"test")
         service.save(p)
         assertEquals Post.getAll().size(), 1
     }
