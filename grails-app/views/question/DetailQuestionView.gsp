@@ -46,7 +46,7 @@
 					${q.body}
 				</div>
 				<g:message code="default.label.by"/> :
-				${q.author.pseudo}
+				<g:link controller="member" action="myAccount" id="${q.author.id}">${q.author.pseudo}</g:link>
 				<br/>
 				
 				<div style="font-size: 0.7em;"><g:message code="default.label.date"/> ${q.date}</div>
@@ -87,7 +87,8 @@
 						<div class="commentDetail">
 							${c.body}
 							<br />
-									<g:message code="default.label.by"/> : ${c.author.pseudo}
+									<g:message code="default.label.by"/> : 
+									<g:link controller="member" action="myAccount" id="${c.author.id}">${c.author.pseudo}</g:link>
 							<br />
 							<!-- Edit button for the author of the comment, or for the admin -->
 							<g:if
@@ -142,7 +143,7 @@
 			
 				<div style="float: right; width: 90%;">
 					${a.body} <br/>
-					<g:message code="default.label.by"/> : ${a.author.pseudo} <br/>
+					<g:message code="default.label.by"/> : <g:link controller="member" action="myAccount" id="${a.author.id}">${a.author.pseudo}</g:link> <br/>
 					<span style="font-size: 0.7em;">
 						<g:message code="default.label.date"/> ${a.date}
 					</span>
@@ -177,7 +178,7 @@
 							<div class="commentDetail">
 								${com.body}
 								<br />
-											<g:message code="default.label.by"/> : ${com.author.pseudo}
+											<g:message code="default.label.by"/> : <g:link controller="member" action="myAccount" id="${com.author.id}">${com.author.pseudo}</g:link>
 								<br />
 								<!-- Edit button for the author of the comment, or for the admin -->
 								<g:if

@@ -126,11 +126,11 @@
 									<g:actionSubmit value="Save changes" action="updateProfile"/>
 								</p>	
 							</g:if>
-							<g:else>
+							<g:elseif test="${member.id == session?.user?.id }">
 								<p class="submit">
 									<g:actionSubmit value="Edit profile" action="edit"/>
 								</p>
-							</g:else>
+							</g:elseif>
 						</fieldset>								
 					</g:form>
 				</div>

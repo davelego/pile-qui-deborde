@@ -111,7 +111,7 @@
 				<g:each var="q" in="${questions}">
 					<div class="questionList">
 						<g:message code="default.label.title"/> : <g:link controller="question" action="detail" id="${q.id}">${q.title}</g:link><br/>
-						<div class="questionAuthor"> <g:message code="default.label.by"/> : ${q.author.pseudo} </div>	
+						<div class="questionAuthor"> <g:message code="default.label.by"/> :  <g:link controller="member" action="myAccount" id="${q.author.id}">${q.author.pseudo}</g:link> </div>	
 						<div class="questionTag"> <g:message code="default.label.tags"/>  <g:each var="t" in="${q.tags}"> <span class="tag"> <g:link controller="question" action="questionByTags" id="${t.id}">${t.word}</g:link> </span></g:each></div>
 						<div style="font-size: 0.7em;"><g:message code="default.label.date"/> ${q.date}</div><br/>
 					</div> 
