@@ -4,7 +4,7 @@
 		<meta name="layout" content="main"/>
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'questionstyle.css')}" type="text/css">
 		<g:javascript library='jquery' />
-		<title><g:message code="default.label.answerquetion"/></title>
+		<title><g:message code="default.label.answerquestion"/></title>
 	</head>
 	
 	<body>

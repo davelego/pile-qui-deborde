@@ -3,7 +3,7 @@
 	<head>
 		<meta name="layout" content="main"/>
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'questionstyle.css')}" type="text/css">
-		<title><g:message code="default.label.newquestion"/>n</title>
+		<title><g:message code="default.label.newquestion"/></title>
 	</head>
 	
 	<body>
