@@ -13,7 +13,7 @@
 				<div id="formUser" style="float:left;">
 					<g:form name="formupdatemember" params="${[memberToEdit:member.id]}" method="post" enctype="multipart/form-data">	
 						<fieldset>
-							<legend>Profile details</legend>
+							<h2>Profile details</h2><br/>
 							
 							<p class='${hasErrors(bean:member,field:'firstName','errors')}' >					
 								<label for="firstname"><g:message code="default.label.firstname"/> : </label>

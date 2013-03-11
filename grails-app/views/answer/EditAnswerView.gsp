@@ -12,7 +12,7 @@
 			<a href="${createLink(uri: '/', absolute: true)}"><- <g:message code="default.label.mainpage"/></a><br/><br/>
 		
 			<g:renderErrors bean="${question}" />
-			<g:form name="formeditanswer" params="${[idanswer: answer.id]}">	
+			<g:form name="formnewquestion" params="${[idanswer: answer.id]}">	
 				<fieldset>
 					<legend><g:message code="default.label.editanswer"/> :</legend>
 					

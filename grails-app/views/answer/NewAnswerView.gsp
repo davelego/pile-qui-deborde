@@ -3,6 +3,7 @@
 	<head>
 		<meta name="layout" content="main"/>
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'questionstyle.css')}" type="text/css">
+		<g:javascript library='jquery' />
 		<title><g:message code="default.label.answerquetion"/></title>
 	</head>
 	
@@ -11,7 +12,7 @@
 		<a href="${createLink(uri: '/', absolute: true)}"><- <g:message code="default.label.mainpage"/></a><br/><br/>
 		
 		<g:renderErrors bean="${answer}" />
-			<g:form name="formnewanswer" params="${[idquestion: question.id]}">	
+			<g:form name="formnewquestion" params="${[idquestion: question.id]}">	
 				<fieldset>
 					<legend><g:message code="default.label.answerquestion"/> :</legend>
 					
@@ -21,8 +22,16 @@
 					</p>
 					
 					<p>
-						<label for="title"><g:message code="default.label.tags"/></label>
-						<g:textField name="tags" type="text" size="30" value="${question.tags}" readonly="readonly" />
+						<label for="tags"><g:message code="default.label.tags"/></label>
+						<g:textField name="tags" type="text" size="30" readonly="readonly"/>
+							<jq:jquery>
+								$('#tags').val('')
+							</jq:jquery>
+						<g:each var="t" in="${question.tags}">
+							<jq:jquery>
+								$('#tags').val($('#tags').val() + '${t.word} ');                                
+							</jq:jquery>
+						</g:each>
 					</p>
 					
 					<p>
