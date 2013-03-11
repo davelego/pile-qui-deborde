@@ -104,8 +104,9 @@ class MemberController {
 	
 	/* Displays the information of the logged user */
 	def myAccount () {
-		if (!session.user) {
-			redirect(controller:"member", action:"index")
+		if (params.id) {
+			//redirect(controller:"member", action:"index")
+			render(view: "MyAccountMemberView", model:[member: Member.get(params.id),edit:false])
 		} else {
 			def currentMember = Member.get(session.user.id)
 			render(view: "MyAccountMemberView", model:[member: currentMember,edit:false])
